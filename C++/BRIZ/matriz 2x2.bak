@@ -1,0 +1,30 @@
+#include <conio>
+#include <stdio>
+#include <iostream>
+
+main()
+{
+ int a[2][2];
+
+ for(int f=0;f<=1;f++)
+{
+for(int c=0;c<=1;c++)
+{
+cout<<"ingrese el numero para  posicion: "<<f<<"."<<c;
+cin>>a[f][c];
+}
+
+}
+  	for(int f=0;f<=1;f++)
+	{
+	for(int c=0;c<=1;c++)
+   {
+	cout<<a[f][c]<<"\t";
+	}
+
+}
+
+
+
+getch();
+}

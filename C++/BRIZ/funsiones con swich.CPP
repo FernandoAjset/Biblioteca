@@ -1,0 +1,56 @@
+#include <iostream>
+#include <conio>
+
+
+
+Void suma(int a, int b)
+    {
+		cout<<"ingrese los numerso a sumar: \n";
+   	cin>>a>>b;
+		int resultado;
+      resultado=a+b;
+      cout<<"el resultado es: "<<resultado<<endl;
+    }
+
+ Void resta( int a, int b) {
+ 		cout<<"ingrese los numerso a restar: \n";
+      cin>>a>>b;
+		int resultado;
+      resultado=a-b;
+      cout<<"el resultado es: "<<resultado<<endl;
+   }
+
+void tabla (int a) {
+
+	cout<<"ingrese el numero para mostrar la tabla\n";
+	cin>>a
+	cout<<" estta es la tabla del : " <<a<<endl;
+
+ 		for(x=1; x<=10; x++)
+      	{
+     		 int resultado;
+          resultado= a*x;
+          cout<<a<<"X"<<x<<" ="<<resultado<< endl;
+      	}
+   }
+
+main(){
+//int op;
+ cout<<"Bienvenido al menú\n"<<"ingrese el numero de laa aciion que desea realizar\n";
+ //cout<<"1. sumar\n"<<"2. restar\n"<<"3. tabla de multuplicar\n";
+ //cin>>op;
+
+ swich(op)
+ case 1: suma();
+ 	  		break;
+
+ case 2: resta();
+ 			break;
+
+ case 3: tabla();
+ 	 		break;
+
+
+getch();
+}
+

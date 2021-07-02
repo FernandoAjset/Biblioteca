@@ -1,0 +1,47 @@
+#include<iostream>
+#include<stdio>                                                                                                             #include<stdio>
+#include<conio>
+#include<fstream>
+
+main()
+{
+    fstream leer;
+    fstream esc;
+    int i, x, cont, aux;
+    char texto[20];
+
+    leer.open("Log.txt", ios::in);
+    while(!leer.eof())
+    {
+         leer.getline(texto, 20);
+         cont++;
+    }
+    cout<<cont<<endl;
+    aux=cont-5;
+    cout<<aux;
+    cont=0;
+
+    while(!leer.eof())
+    {
+     		leer.getline(texto, 20);
+         cont++;
+         if(cont>aux)
+         {
+         	cout<<texto<<endl;
+         }
+    }
+    leer.close();
+    /*leer.seekg(0, ios::end);
+    pos=leer.tellg();
+    cout<<"Posicion actual "<<pos<<endl;
+    cout<<"\IMPRIMIENDO ULTIMOS 5 MOVIMIENTOS..."<<endl;
+    for(i=1; i<=5; i++)
+    {
+    	 leer.seekg(pos-(16*i), ios::beg);  //18 caracteres por linea
+       cout<<i<<".- ";
+    	 leer.getline(texto,20);
+    	 cout<<texto<<endl;
+    } */
+
+   getch();
+}

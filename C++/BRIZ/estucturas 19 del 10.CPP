@@ -1,0 +1,54 @@
+#include<iostream>
+#include<conio>
+
+struct direccion
+{
+ int calle;
+ int zona;
+ int avenida;
+ char barrio[30];
+};
+
+struct persona
+{
+ char nombre[65];
+ direccion dir;
+ int edad;
+};
+
+
+int main()
+{
+  persona estudiante;
+
+  cout<<"ingrese el nombre del estudiante: \n \n";
+  cin>>estudiante.nombre;
+  cout<<"ingrese edad del estudiante: \n";
+  cin>>estudiante.edad;
+  cout<<"\nDireccion del estudiante: \n \n";
+  cout<<"ingrese calle del estudiante: \n";
+  cin>>estudiante.dir.calle;
+  cout<<"ingrese zona del estudiante: \n";
+  cin>>estudiante.dir.zona;
+  cout<<"ingrese avenida del estudiante: \n";
+  cin>>estudiante.dir.avenida;
+  cout<<"ingrese nombre del barrio del estudiante: \n";
+  cin>>estudiante.dir.barrio;
+
+
+
+
+  cout<<"\nImprimiendo los datos ingresados del estudiant3e: \n";
+  cout<<"nombre: "<<estudiante.nombre<<"\n";
+  cout<<"edad: "<<estudiante.edad<<"\n\n";
+
+  cout<<"direccion del estudiante: \n";
+  cout<<"calle: "<<estudiante.dir.calle<<"\n";
+  cout<<"zona: "<<estudiante.dir.zona<<"\n";
+  cout<<"avenida: "<<estudiante.dir.avenida<<"\n";
+  cout<<"barrio: "<<estudiante.dir.barrio<<"\n";
+
+
+  getch();
+
+}

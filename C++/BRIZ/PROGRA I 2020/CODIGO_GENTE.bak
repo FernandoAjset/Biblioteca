@@ -1,0 +1,44 @@
+#include <iostream>
+#include <conio>
+#include <stdlib>
+#include <stdio>
+
+	struct gente
+	{
+   char n[20];
+   int e;
+   char d[50];
+	};
+
+int main()
+{
+	gente persona;
+	FILE *save;
+
+   save=fopen("gente.dat","w");
+	cout<<"****INICIANDO....****\n";
+   cout<<"POR FAVOR INGRESE LOS DATOS SIGUIENTES: \n";
+	cout<<"NOMBRE: ";
+   cin>>persona.n;
+   cout<<"EDAD: ";
+   cin>>persona.e;
+   cout<<"DIRECCIÓN: ";
+   cin>>persona.d;
+   fwrite(&persona,sizeof(gente),1,save);
+   fclose(save);
+
+			cout<<"\n\nLOS DATOS GUARDADOS SON: \n";
+			save=fopen("gente.dat", "r");
+			fread(&persona,sizeof(gente),1,save);
+        	 	while(!feof(save))
+         	{
+          		cout<<"Nombre: "<<persona.n;
+               cout<<"\nEdad:  "<<persona.e;
+               cout<<"\nDirección: "<<persona.d;
+               fread(&persona,sizeof(gente),1,save);
+            }
+fclose(save);
+getch();
+
+}
+

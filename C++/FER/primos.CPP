@@ -1,0 +1,34 @@
+#include <iostream>
+#include <conio>
+
+int main();
+{
+	int divisor = 1, divisores = 0, num = 0;
+
+	cout<<"Ingrese un numero: \n";
+	cin>>num;
+do{
+
+	if(num / divisor == 0)
+   {
+	divisores++;
+   }
+divisor++;
+	}
+
+while(divisor <= num);
+
+	if(divisores == 2)
+   {
+
+	cout<<<<num<<" es PRIMO.";
+	}
+
+	else
+   {
+	cout<<<<num<<" NO es PRIMO.";
+	}
+return 0;
+
+getch();
+}

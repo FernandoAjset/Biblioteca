@@ -1,0 +1,17 @@
+#include <iostream>
+#include <conio>
+#include <stdio>
+#include <fstream>
+
+int main()
+{
+ofstream esc;
+esc.open("nop.txt");
+esc<<"entrando al archivo"<<endl;
+esc<<"ultima linea"<<endl;
+esc.close();
+return 0;
+
+
+ getch();
+}

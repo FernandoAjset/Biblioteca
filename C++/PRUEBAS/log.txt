@@ -1,0 +1,7 @@
+Retiro:   Q100
+Deposito: Q500
+Deposito: Q100
+Deposito: Q100
+Retiro:   Q200
+Deposito: Q100
+Retiro:   Q700

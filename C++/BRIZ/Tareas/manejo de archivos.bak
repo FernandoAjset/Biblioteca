@@ -1,0 +1,23 @@
+#include<conio>
+#include<fstream>
+#include<stdio>
+#include<iostream>
+
+
+main()
+{
+ofstream txt;
+char name[20];
+
+cout<<"Por favor Ingrese su Primer Nombre para agregar al archivo";
+cin>>name;
+
+txt.open("manejo de archivos.txt", ios::app);
+cout<<endl;
+txt<<" se ha guardado:   "<<name;
+txt.close();
+
+
+
+getch();
+}

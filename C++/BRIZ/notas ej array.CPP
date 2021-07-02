@@ -1,0 +1,40 @@
+#include<iostream>
+#include<conio>
+#include<stdio>
+
+main()
+{
+ int pp[10],sp[10],z[10],ef[10],t[10];
+
+ for(int x=0; x<=1; x++)
+ {
+ cout<<"ingrese nota para pp: "<<endl;
+ cin>>pp[x];
+ cout<<"ingrese nota para sp: " <<endl;
+ cin>>sp[x];
+ cout<<"ingresenota para zona: " <<endl;
+ cin>>z[x];
+ cout<<"ingrese nota para ef: "<<endl;
+ cin>>ef[x];
+
+ t[x]=pp[x]+sp[x]+z[x]+ef[x];
+
+ }
+
+ cout<<"pp"<<"\t"<<"sp"<<"\t"<<"z"<<"\t"<<"ef"<<"\t"<<"Total"<<"\t"<<"Resutado"<<endl;
+ for(int x=0;x<=1;x++)
+  {
+ cout<<pp[x]<<"\t"<<sp[x]<<"\t"<<z[x]<<"\t"<<ef[x]<<"\t"<<t[x]<<"\t";
+ if(t[x]>=61)
+ 	 {
+  cout<<"APROBADO";
+	 }
+ else
+  {
+  cout<<"REPROBADO";
+ }
+
+ cout<<endl;
+ }
+ getch();
+}

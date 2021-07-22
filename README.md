@@ -1,2 +1,2 @@
 # Programacion
-Repositorio principal
+Repositorio principal de todo mi aprendizaje.

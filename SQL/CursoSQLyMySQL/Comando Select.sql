@@ -1,0 +1,27 @@
+#PONIENDO LIMITE DE TUPLAS ALEATORIAS SIN CONDICIONES
+SELECT name,email,gender FROM clients limit 10;
+
+#HACIENDO CONSULTA CONDICIONANDO, TRAE TODAS LAS TUPLAS DONDE EL GENERO SEA 'M'
+select name, email, gender from clients where gender='M';
+
+#TRAYENDO SOLO EL AÑO DE LAS FECHAS DE CUMPLEAÑOS USANDO FUNCIONES
+select year(birthdate) from clients;
+
+#FUNCION NOW QUE DICE LA FECHA Y HORA DE LA COMPUTADORA
+select year(now());
+
+#USANDO FUNCION PARA RESTAR EL HOY CON LA FECHA DE NACIMIENTO, PARA DEVOLVER EDAD APROXIMADA
+select year(NOW())-year(birthdate) FROM clients;
+
+#CONSULTA USANDO FUNCION PARA MOSTRAR NOMBRE Y EDAD APROX.
+select name, year(NOW())-year(birthdate) FROM clients;
+
+#USANDO LIKE PARA COMPARAR LO QUE ESTA ENTRE "%" Y MOSTRAR LAS TUPLAS QUE CONTENGAN ESE TEXTO
+select * from clients where name like '%Saave%';
+
+#CONSULTA QUE DEVUELVE DATOS, EDAD USANDO ALIAS, DE LAS TUPLAS QUE SEAN GENERO='F' Y EL NOMBRE CONTENGA 'Lop'
+SELECT name, email, YEAR(NOW())-YEAR(birthdate) Edad,
+gender from clients
+where gender='F'
+AND
+name LIKE '%Lop%';

@@ -40,3 +40,17 @@ JOIN authors as a
 WHERE c.gender='M'
 AND t.type IN ('sell','lend')    
 ;    
+
+#REPITIENDO CONSULTA ANTERIOR, PRACTICANDO
+SELECT c.name,b.title, a.name, t.type
+FROM transactions as t
+JOIN books as b
+    ON t.book_id=b.book_id
+JOIN clients as c
+    ON t.client_id=c.client_id
+JOIN authors as a
+    ON b.author_id=a.author_id
+WHERE c.gender='M'
+AND t.type IN('sell','lend');
+
+

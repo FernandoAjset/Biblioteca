@@ -1,0 +1,626 @@
+<!DOCTYPE HTML>
+<html lang="es"
+	prefix="og: https://ogp.me/ns#" >
+<head>
+	<meta charset="UTF-8">
+	
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		
+		<!-- All in One SEO 4.1.0.2 -->
+		<title>Truncate vs Delete en MySQL (Diferencias) | El Codigo Fuente</title>
+		<meta name="description" content="Si lo que deseas es eliminar datos de una tabla, en MySQL tienes 2 formas de hacerlo, normalmente usamos el delete from table para ese tipo de acciones, es un DML ( lenguaje de manipulación de datos) por tanto admite parámetros usando condiciones,"/>
+		<link rel="canonical" href="http://www.elcodigofuente.com/truncate-vs-delete-mysql-diferencias-601/" />
+		<meta property="og:site_name" content="El Codigo Fuente | Programación para todos con codigos y algoritmos sencillos y amigables" />
+		<meta property="og:type" content="article" />
+		<meta property="og:title" content="Truncate vs Delete en MySQL (Diferencias) | El Codigo Fuente" />
+		<meta property="og:description" content="Si lo que deseas es eliminar datos de una tabla, en MySQL tienes 2 formas de hacerlo, normalmente usamos el delete from table para ese tipo de acciones, es un DML ( lenguaje de manipulación de datos) por tanto admite parámetros usando condiciones," />
+		<meta property="og:url" content="http://www.elcodigofuente.com/truncate-vs-delete-mysql-diferencias-601/" />
+		<meta property="article:published_time" content="2013-03-19T15:22:12Z" />
+		<meta property="article:modified_time" content="2013-03-19T15:32:55Z" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:domain" content="www.elcodigofuente.com" />
+		<meta name="twitter:title" content="Truncate vs Delete en MySQL (Diferencias) | El Codigo Fuente" />
+		<meta name="twitter:description" content="Si lo que deseas es eliminar datos de una tabla, en MySQL tienes 2 formas de hacerlo, normalmente usamos el delete from table para ese tipo de acciones, es un DML ( lenguaje de manipulación de datos) por tanto admite parámetros usando condiciones," />
+		<script type="application/ld+json" class="aioseo-schema">
+			{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebSite","@id":"http:\/\/www.elcodigofuente.com\/#website","url":"http:\/\/www.elcodigofuente.com\/","name":"El Codigo Fuente","description":"Programaci\u00f3n para todos con codigos y algoritmos sencillos y amigables","publisher":{"@id":"http:\/\/www.elcodigofuente.com\/#organization"}},{"@type":"Organization","@id":"http:\/\/www.elcodigofuente.com\/#organization","name":"El Codigo Fuente","url":"http:\/\/www.elcodigofuente.com\/"},{"@type":"BreadcrumbList","@id":"http:\/\/www.elcodigofuente.com\/truncate-vs-delete-mysql-diferencias-601\/#breadcrumblist","itemListElement":[{"@type":"ListItem","@id":"http:\/\/www.elcodigofuente.com\/#listItem","position":"1","item":{"@id":"http:\/\/www.elcodigofuente.com\/#item","name":"Inicio","description":"Codigos Fuentes sencillos y amigables, pseudo codigo facil de ententer, recursos, trucos, tips, optimizacion de codigos y tecnologias e programacion a tu alcanze","url":"http:\/\/www.elcodigofuente.com\/"}}]},{"@type":"Person","@id":"http:\/\/www.elcodigofuente.com\/author\/admin\/#author","url":"http:\/\/www.elcodigofuente.com\/author\/admin\/","name":"Jhonnyf","image":{"@type":"ImageObject","@id":"http:\/\/www.elcodigofuente.com\/truncate-vs-delete-mysql-diferencias-601\/#authorImage","url":"http:\/\/1.gravatar.com\/avatar\/1d5ee56b608c0780af1e1c6de843dd08?s=96&d=mm&r=g","width":"96","height":"96","caption":"Jhonnyf"}},{"@type":"WebPage","@id":"http:\/\/www.elcodigofuente.com\/truncate-vs-delete-mysql-diferencias-601\/#webpage","url":"http:\/\/www.elcodigofuente.com\/truncate-vs-delete-mysql-diferencias-601\/","name":"Truncate vs Delete en MySQL (Diferencias) | El Codigo Fuente","description":"Si lo que deseas es eliminar datos de una tabla, en MySQL tienes 2 formas de hacerlo, normalmente usamos el delete from table para ese tipo de acciones, es un DML ( lenguaje de manipulaci\u00f3n de datos) por tanto admite par\u00e1metros usando condiciones,","inLanguage":"es","isPartOf":{"@id":"http:\/\/www.elcodigofuente.com\/#website"},"breadcrumb":{"@id":"http:\/\/www.elcodigofuente.com\/truncate-vs-delete-mysql-diferencias-601\/#breadcrumblist"},"author":"http:\/\/www.elcodigofuente.com\/truncate-vs-delete-mysql-diferencias-601\/#author","creator":"http:\/\/www.elcodigofuente.com\/truncate-vs-delete-mysql-diferencias-601\/#author","image":{"@type":"ImageObject","@id":"http:\/\/www.elcodigofuente.com\/#mainImage","url":"http:\/\/www.elcodigofuente.com\/wp-content\/uploads\/logo-mysql.jpg","width":"399","height":"291"},"primaryImageOfPage":{"@id":"http:\/\/www.elcodigofuente.com\/truncate-vs-delete-mysql-diferencias-601\/#mainImage"},"datePublished":"2013-03-19T15:22:12+00:00","dateModified":"2013-03-19T15:32:55+00:00"},{"@type":"Article","@id":"http:\/\/www.elcodigofuente.com\/truncate-vs-delete-mysql-diferencias-601\/#article","name":"Truncate vs Delete en MySQL (Diferencias) | El Codigo Fuente","description":"Si lo que deseas es eliminar datos de una tabla, en MySQL tienes 2 formas de hacerlo, normalmente usamos el delete from table para ese tipo de acciones, es un DML ( lenguaje de manipulaci\u00f3n de datos) por tanto admite par\u00e1metros usando condiciones,","headline":"Truncate vs Delete en MySQL (Diferencias)","author":{"@id":"http:\/\/www.elcodigofuente.com\/author\/admin\/#author"},"publisher":{"@id":"http:\/\/www.elcodigofuente.com\/#organization"},"datePublished":"2013-03-19T15:22:12+00:00","dateModified":"2013-03-19T15:32:55+00:00","commentCount":"2","articleSection":"MySQL, borrar, consultas, destruir, eliminar, eliminar con condici\u00f3n, reinicar autoincrement, reiniciar contador, valor autoincrementar","mainEntityOfPage":{"@id":"http:\/\/www.elcodigofuente.com\/truncate-vs-delete-mysql-diferencias-601\/#webpage"},"isPartOf":{"@id":"http:\/\/www.elcodigofuente.com\/truncate-vs-delete-mysql-diferencias-601\/#webpage"},"image":{"@type":"ImageObject","@id":"http:\/\/www.elcodigofuente.com\/#articleImage","url":"http:\/\/www.elcodigofuente.com\/wp-content\/uploads\/logo-mysql.jpg","width":"399","height":"291"}}]}
+		</script>
+		<!-- All in One SEO -->
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="El Codigo Fuente &raquo; Feed" href="http://www.elcodigofuente.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="El Codigo Fuente &raquo; Feed de los comentarios" href="http://www.elcodigofuente.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="El Codigo Fuente &raquo; Comentario Truncate vs Delete en MySQL (Diferencias) del feed" href="http://www.elcodigofuente.com/truncate-vs-delete-mysql-diferencias-601/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.elcodigofuente.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.7.2"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='crayon-css'  href='http://www.elcodigofuente.com/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-classic-css'  href='http://www.elcodigofuente.com/wp-content/plugins/crayon-syntax-highlighter/themes/classic/classic.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='http://www.elcodigofuente.com/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='http://www.elcodigofuente.com/wp-includes/css/dist/block-library/style.min.css?ver=5.7.2' type='text/css' media='all' />
+<link rel='stylesheet' id='dlm-frontend-css'  href='http://www.elcodigofuente.com/wp-content/plugins/download-monitor/assets/css/frontend.css?ver=5.7.2' type='text/css' media='all' />
+<link rel='stylesheet' id='us-body-text-font-css'  href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2C700%2C400italic%2C700italic&#038;subset=latin&#038;ver=5.7.2' type='text/css' media='all' />
+<link rel='stylesheet' id='us-heading-font-css'  href='http://fonts.googleapis.com/css?family=Roboto+Slab%3A400%2C300%2C700&#038;subset=latin&#038;ver=5.7.2' type='text/css' media='all' />
+<link rel='stylesheet' id='js_composer_custom_css-css'  href='http://www.elcodigofuente.com/wp-content/uploads/js_composer/custom.css?ver=4.3.3' type='text/css' media='screen' />
+<link rel='stylesheet' id='us_motioncss-css'  href='http://www.elcodigofuente.com/wp-content/themes/Astra/css/motioncss.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='us_motioncss-widgets-css'  href='http://www.elcodigofuente.com/wp-content/themes/Astra/css/motioncss-widgets.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='us_font-awesome-css'  href='http://www.elcodigofuente.com/wp-content/themes/Astra/css/font-awesome.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='us_magnific-popup-css'  href='http://www.elcodigofuente.com/wp-content/themes/Astra/css/magnific-popup.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='us_wp-widgets-css'  href='http://www.elcodigofuente.com/wp-content/themes/Astra/css/wp-widgets.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='us_style-css'  href='http://www.elcodigofuente.com/wp-content/themes/Astra/css/style.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='us_responsive-css'  href='http://www.elcodigofuente.com/wp-content/themes/Astra/css/responsive.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='us_animation-css'  href='http://www.elcodigofuente.com/wp-content/themes/Astra/css/animation.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='us_custom_css-css'  href='http://www.elcodigofuente.com/wp-content/uploads/us_custom_css/us_astra_custom_styles.css?ver=1' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-includes/js/jquery/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' id='crayon_js-js-extra'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/www.elcodigofuente.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta' id='crayon_js-js'></script>
+<link rel="https://api.w.org/" href="http://www.elcodigofuente.com/wp-json/" /><link rel="alternate" type="application/json" href="http://www.elcodigofuente.com/wp-json/wp/v2/posts/601" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.elcodigofuente.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.elcodigofuente.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.7.2" />
+<link rel='shortlink' href='http://www.elcodigofuente.com/?p=601' />
+<link rel="alternate" type="application/json+oembed" href="http://www.elcodigofuente.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.elcodigofuente.com%2Ftruncate-vs-delete-mysql-diferencias-601%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.elcodigofuente.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.elcodigofuente.com%2Ftruncate-vs-delete-mysql-diferencias-601%2F&#038;format=xml" />
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><meta name="generator" content="Powered by Visual Composer - drag and drop page builder for WordPress."/>
+    </head>
+<body class="post-template-default single single-post postid-601 single-format-standard l-body wpb-js-composer js-comp-ver-4.3.3 vc_responsive" >
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=665537843480363&version=v2.3";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- CANVAS -->
+<div class="l-canvas type_boxed col_contside headerpos_fixed">
+	<div class="l-canvas-h">
+
+		<!-- HEADER -->
+		<div class="l-header type_fixed">
+			<div class="l-header-h">
+
+				<div class="l-subheader at_top">
+					<div class="l-subheader-h i-cf">
+										</div>
+				</div>
+				<div class="l-subheader at_middle">
+					<div class="l-subheader-h i-widgets i-cf">
+
+						<div class="w-logo ">
+							<a class="w-logo-link" href="http://www.elcodigofuente.com/">
+								<img class="w-logo-img" src="http://www.elcodigofuente.com/wp-content/uploads/logo_ecf1.png"  alt="El Codigo Fuente">
+								<span class="w-logo-title">El Codigo Fuente</span>
+							</a>
+						</div>
+
+												<div class="w-search submit_inside">
+							<div class="w-search-h">
+								<a class="w-search-show" href="javascript:void(0)"><i class="fa fa-search"></i></a>
+								<form class="w-search-form show_hidden" action="http://www.elcodigofuente.com/">
+																		<div class="w-search-input">
+											<input type="text" value="" name="s" placeholder="Ingrese la consulta"/>
+									</div>
+									<div class="w-search-submit">
+										<input type="submit" id="searchsubmit"  value="Buscar" />
+										<i class="fa fa-search"></i>
+									</div>
+									<a class="w-search-close" href="javascript:void(0)" title="Close search"> &#10005; </a>
+								</form>
+							</div>
+						</div>
+						
+						<!-- NAV -->
+						<nav class="w-nav">
+							<div class="w-nav-h">
+								<div class="w-nav-control">
+									<i class="fa fa-bars"></i>
+								</div>
+								<div class="w-nav-list layout_hor width_auto float_right level_1">
+									<div class="w-nav-list-h"><div id="menu-item-262" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children with_sublevel w-nav-item level_1 menu-item-262"><div class="w-nav-item-h"><a class="w-nav-anchor level_1"  href="http://www.elcodigofuente.com/category/general/"><span class="w-nav-title">General</span><span class="w-nav-hint"></span></a>
+<div class="w-nav-list level_2 place_down show_onhover"><div class="w-nav-list-h">
+	<div id="menu-item-260" class="menu-item menu-item-type-taxonomy menu-item-object-category w-nav-item level_2 menu-item-260"><div class="w-nav-item-h"><a class="w-nav-anchor level_2"  href="http://www.elcodigofuente.com/category/apache/"><span class="w-nav-title">Apache</span><span class="w-nav-hint"></span></a>	</div></div>
+	<div id="menu-item-265" class="menu-item menu-item-type-taxonomy menu-item-object-category w-nav-item level_2 menu-item-265"><div class="w-nav-item-h"><a class="w-nav-anchor level_2"  href="http://www.elcodigofuente.com/category/php/"><span class="w-nav-title">PHP</span><span class="w-nav-hint"></span></a>	</div></div>
+	<div id="menu-item-264" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent w-nav-item level_2 menu-item-264"><div class="w-nav-item-h"><a class="w-nav-anchor level_2"  href="http://www.elcodigofuente.com/category/mysql/"><span class="w-nav-title">MySQL</span><span class="w-nav-hint"></span></a>	</div></div>
+	<div id="menu-item-263" class="menu-item menu-item-type-taxonomy menu-item-object-category w-nav-item level_2 menu-item-263"><div class="w-nav-item-h"><a class="w-nav-anchor level_2"  href="http://www.elcodigofuente.com/category/html/"><span class="w-nav-title">HTML</span><span class="w-nav-hint"></span></a>	</div></div>
+</div></div>
+</div></div>
+<div id="menu-item-259" class="menu-item menu-item-type-taxonomy menu-item-object-category w-nav-item level_1 menu-item-259"><div class="w-nav-item-h"><a class="w-nav-anchor level_1"  href="http://www.elcodigofuente.com/category/redes-publicidad/"><span class="w-nav-title">Ads/Publicidad</span><span class="w-nav-hint"></span></a></div></div>
+<div id="menu-item-261" class="menu-item menu-item-type-taxonomy menu-item-object-category w-nav-item level_1 menu-item-261"><div class="w-nav-item-h"><a class="w-nav-anchor level_1"  href="http://www.elcodigofuente.com/category/consola-ssh/"><span class="w-nav-title">Consola SSH/Shell</span><span class="w-nav-hint"></span></a></div></div>
+<div id="menu-item-295" class="menu-item menu-item-type-custom menu-item-object-custom w-nav-item level_1 menu-item-295"><div class="w-nav-item-h"><a class="w-nav-anchor level_1"  href="http://www.elcodigofuente.com/ip_locator.php"><span class="w-nav-title">Localizar IP</span><span class="w-nav-hint"></span></a></div></div>
+<div id="menu-item-992" class="menu-item menu-item-type-taxonomy menu-item-object-category w-nav-item level_1 menu-item-992"><div class="w-nav-item-h"><a class="w-nav-anchor level_1"  href="http://www.elcodigofuente.com/category/laravel/"><span class="w-nav-title">Laravel</span><span class="w-nav-hint"></span></a></div></div>
+<div id="menu-item-894" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children with_sublevel w-nav-item level_1 menu-item-894"><div class="w-nav-item-h"><a class="w-nav-anchor level_1"  href="http://www.elcodigofuente.com/category/cms/"><span class="w-nav-title">CMS</span><span class="w-nav-hint"></span></a>
+<div class="w-nav-list level_2 place_down show_onhover"><div class="w-nav-list-h">
+	<div id="menu-item-895" class="menu-item menu-item-type-taxonomy menu-item-object-category w-nav-item level_2 menu-item-895"><div class="w-nav-item-h"><a class="w-nav-anchor level_2"  href="http://www.elcodigofuente.com/category/cms/wordpress/"><span class="w-nav-title">WordPress</span><span class="w-nav-hint"></span></a>	</div></div>
+	<div id="menu-item-897" class="menu-item menu-item-type-taxonomy menu-item-object-category w-nav-item level_2 menu-item-897"><div class="w-nav-item-h"><a class="w-nav-anchor level_2"  href="http://www.elcodigofuente.com/category/cms/prestashop/"><span class="w-nav-title">Prestashop</span><span class="w-nav-hint"></span></a>	</div></div>
+	<div id="menu-item-898" class="menu-item menu-item-type-taxonomy menu-item-object-category w-nav-item level_2 menu-item-898"><div class="w-nav-item-h"><a class="w-nav-anchor level_2"  href="http://www.elcodigofuente.com/category/cms/vbulletin/"><span class="w-nav-title">vBulletin</span><span class="w-nav-hint"></span></a>	</div></div>
+</div></div>
+</div></div>
+</div>								</div>
+							</div>
+						</nav><!-- /NAV -->
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- /HEADER -->
+
+		<!-- MAIN -->
+		<div class="l-main">
+			<div class="l-main-h">
+
+
+
+    <script>
+
+    </script>
+	<div class="l-submain">
+		<div class="l-submain-h g-html i-cf">
+			<div class="l-content">
+				<div class="l-content-h i-widgets">
+
+					<div class="w-blogpost meta_all post-601 post type-post status-publish format-standard has-post-thumbnail hentry category-mysql tag-borrar tag-consultas tag-destruir tag-eliminar tag-eliminar-con-condicion tag-reinicar-autoincrement tag-reiniciar-contador tag-valor-autoincrementar">
+						<div class="w-blogpost-h">
+
+							<div class="w-blogpost-content">
+								
+								<h1 class="w-blogpost-title">Truncate vs Delete en MySQL (Diferencias)</h1>								<div style="padding: 10px 5px">
+                                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                    <!-- codigofuente_enlaces_post -->
+                                    <ins class="adsbygoogle"
+                                         style="display:inline-block;width:468px;height:15px"
+                                         data-ad-client="ca-pub-0883219017533095"
+                                         data-ad-slot="4089836180"></ins>
+                                    <script>
+                                        (adsbygoogle = window.adsbygoogle || []).push({});
+                                    </script>
+                                </div>
+
+								<div class="w-blogpost-meta">
+
+									<div class="w-blogpost-meta-date">
+										<i class="fa fa-clock-o"></i>
+                                        <span class="date updated">19 marzo, 2013</span>
+									</div>
+																		<div class="w-blogpost-meta-author">
+										<i class="fa fa-user"></i>
+																					<span class="w-blogpost-meta-author-h">Jhonnyf</span>
+																			</div>
+																											<div class="w-blogpost-meta-comments">
+										<a href="http://www.elcodigofuente.com/truncate-vs-delete-mysql-diferencias-601/#comments" class="w-blogpost-meta-comments-h" ><i class="fa fa-comments"></i>2 Comentarios</a>									</div>
+																	</div>
+								<div class="w-blogpost-text">
+
+									<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+									<!-- Responsive -->
+									<ins class="adsbygoogle"
+									     style="display:block"
+									     data-ad-client="ca-pub-0883219017533095"
+									     data-ad-slot="2496536181"
+									     data-ad-format="auto"></ins>
+									<script>
+										(adsbygoogle = window.adsbygoogle || []).push({});
+									</script>
+
+									<p>Si lo que deseas es eliminar datos de una tabla, en MySQL tienes 2 formas de hacerlo, normalmente usamos el <strong>delete from table</strong> para ese tipo de acciones, es un <strong>DML </strong>( lenguaje de manipulación de datos) por tanto admite parámetros usando condiciones, es decir soporta la clausula WHERE además que te devuelve el numero de archivos afectados en la operación y puedes incluso usar el LIMIT. recuerden que el DELETE borra registros 1 por 1 además que la tabla recuerda el valor <strong>AUTO_INCREMENT en caso la hayas vaciado</strong>.</p>
+<p>En el caso del <strong>TRUNCATE</strong> lo que se realiza es destruir la tabla y luego recrearla ya que es un DLL (lenguaje de definición de datos), lo que lo hace más rápido y no devuelve registros afectados, <strong>TRUNCATE TABLE</strong> es una extensión de Oracle SQL adoptada en MySQL. y <strong>optimizado para MySQL 5.0.3</strong>, <span style="color: #ff0000;">antes de la versión <strong>5.0.3</strong> ambos comandos son prácticamente</span><span style="color: #ff0000;"> lo mismo</span>.</p>
+<h3>Usando <span style="color: #ff0000;"><strong>DELETE</strong></span> es posible de hacer:</h3>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-6116eb2c39f0d176985494" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Transact-SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+delete from TABLA where userid&lt;10 limit 2</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-6116eb2c39f0d176985494-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-6116eb2c39f0d176985494-1"><span class="crayon-k">delete</span><span class="crayon-h"> </span><span class="crayon-k">from</span><span class="crayon-h"> </span><span class="crayon-i">TABLA</span><span class="crayon-h"> </span><span class="crayon-k">where</span><span class="crayon-h"> </span><span class="crayon-i">userid</span><span class="crayon-o">&lt;</span><span class="crayon-cn">10</span><span class="crayon-h"> </span><span class="crayon-k">limit</span><span class="crayon-h"> </span><span class="crayon-cn">2</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0039 seconds] -->
+
+y si quieres eliminar todos los regitros de la tabla simplemente no le pones la clausula WHERE, recuerda que este tipo de eliminación lo hace registro por registro<br />
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-6116eb2c39f19417400456" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Transact-SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+delete from TABLE</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-6116eb2c39f19417400456-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-6116eb2c39f19417400456-1"><span class="crayon-k">delete</span><span class="crayon-h"> </span><span class="crayon-k">from</span><span class="crayon-h"> </span><span class="crayon-k">TABLE</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+
+&nbsp;</p>
+<h3>Usando <span style="color: #ff0000;">TRUNCATE</span>:</h3>
+<!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-6116eb2c39f1c069158551" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Transact-SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+TRUNCATE table</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-6116eb2c39f1c069158551-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-6116eb2c39f1c069158551-1"><span class="crayon-k">TRUNCATE</span><span class="crayon-h"> </span><span class="crayon-k">table</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+
+TRUNCATE TABLE muy rápido. La operación se mapea a DELETE si hay restricciones de clave foránea que referencien la tabla. Para otros motores, TRUNCATE TABLE difiere de DELETE FROM en los siguientes puntos en MySQL 5.0.3:</p>
+<div>
+<ul type="disc">
+<li>Las operaciones de truncado destruyen y recrean la tabla, que es mucho más rápido que borrar registros uno a uno.</li>
+<li>Las operaciones de truncado no son transaccionales; ocurre un error al intentar un truncado durante una transacción o un bloqueo de tabla.</li>
+<li>No se retorna el número de registros borrados.</li>
+<li>Mientras el fichero de definición de la tabla tbl_name.frm sea válido, la tabla puede recrearse como una vacía con TRUNCATE TABLE, incluso si los ficheros de datos o de índice se han corrompido.</li>
+<li>El tratador de tablas no recuerda el último valor <strong>AUTO_INCREMENT</strong> usado, pero empieza a contar desde el principio. Esto es cierto incluso para MyISAM y InnoDB, que normalmente no reúsan valores de secuencia.</li>
+</ul>
+<h3>Resumen de Diferencias:</h3>
+<ol>
+<li>Ambas eliminan los datos, no la estructura de la tabla.</li>
+<li>DELETE permite la eliminación condicional de los registros.</li>
+<li>DELETE es una operación registrada en el log de transacciones, y registrar cada eliminación de manera individual.</li>
+<li>TRUNCATE es una operación registrada en el log de transacciones, pero en conjunto, no por eliminación individual. TRUNCATE se registra como una liberación de las páginas de datos en las cuales existen los datos.</li>
+<li>TRUNCATE es más rápida que DELETE.</li>
+<li>Ambas se pueden deshacer con un ROLLBACK.</li>
+<li>TRUNCATE reiniciará el contador para una tabla que contenga una columna AUTO_INCREMENT .</li>
+<li>DELETE mantendrá el contador de la tabla para una columna IDENTITY.</li>
+<li>TRUNCATE no desencadena un TRIGGER, DELETE sí.</li>
+<li>TRUNCATE es un comando DDL(lenguaje de definición de datos como un CREATE, ALTER, DROP, etc) mientras que DELETE es un DML(lenguaje de manipulación de datos como un SELECT, INSERT, UPDATE).</li>
+</ol>
+</div>
+
+                                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                    <ins class="adsbygoogle"
+                                         style="display:block; text-align:center;"
+                                         data-ad-layout="in-article"
+                                         data-ad-format="fluid"
+                                         data-ad-client="ca-pub-0883219017533095"
+                                         data-ad-slot="2917591392"></ins>
+                                    <script>
+                                        (adsbygoogle = window.adsbygoogle || []).push({});
+                                    </script>
+
+								</div>
+							</div>
+																					<div class="w-tags layout_block title_atleft">
+								<div class="w-tags-h">
+									<div class="w-tags-title">
+										<h4 class="w-tags-title-h">Tags:</h4>
+									</div>
+									<div class="w-tags-list">
+																			<div class="w-tags-item">
+											<a class="w-tags-item-link" href="http://www.elcodigofuente.com/tag/borrar/">borrar</a><span class="w-tags-item-separator">,</span>
+										</div>
+																			<div class="w-tags-item">
+											<a class="w-tags-item-link" href="http://www.elcodigofuente.com/tag/consultas/">consultas</a><span class="w-tags-item-separator">,</span>
+										</div>
+																			<div class="w-tags-item">
+											<a class="w-tags-item-link" href="http://www.elcodigofuente.com/tag/destruir/">destruir</a><span class="w-tags-item-separator">,</span>
+										</div>
+																			<div class="w-tags-item">
+											<a class="w-tags-item-link" href="http://www.elcodigofuente.com/tag/eliminar/">eliminar</a><span class="w-tags-item-separator">,</span>
+										</div>
+																			<div class="w-tags-item">
+											<a class="w-tags-item-link" href="http://www.elcodigofuente.com/tag/eliminar-con-condicion/">eliminar con condición</a><span class="w-tags-item-separator">,</span>
+										</div>
+																			<div class="w-tags-item">
+											<a class="w-tags-item-link" href="http://www.elcodigofuente.com/tag/reinicar-autoincrement/">reinicar autoincrement</a><span class="w-tags-item-separator">,</span>
+										</div>
+																			<div class="w-tags-item">
+											<a class="w-tags-item-link" href="http://www.elcodigofuente.com/tag/reiniciar-contador/">reiniciar contador</a><span class="w-tags-item-separator">,</span>
+										</div>
+																			<div class="w-tags-item">
+											<a class="w-tags-item-link" href="http://www.elcodigofuente.com/tag/valor-autoincrementar/">valor autoincrementar</a><span class="w-tags-item-separator">,</span>
+										</div>
+																		</div>
+
+								</div>
+							</div>
+														
+
+						</div>
+					</div>
+																			<div class="w-bloglist">
+									<h4 class="w-bloglist-title">Post Relacionados</h4>
+									<div class="w-bloglist-list">
+																					<div class="w-bloglist-entry">
+												<a class="w-bloglist-entry-link" href="http://www.elcodigofuente.com/remover-menus-plugins-admincp-vbulletin-483/">Remover Menus de Plugins en AdminCP (vBulletin)</a>
+												<span class="w-bloglist-entry-date">13 marzo, 2013</span>
+											</div>
+																					<div class="w-bloglist-entry">
+												<a class="w-bloglist-entry-link" href="http://www.elcodigofuente.com/show-tables-describe-administracion-mysql-614/">SHOW TABLES, DESCRIBE, Consultas de Administración MySQL</a>
+												<span class="w-bloglist-entry-date">19 marzo, 2013</span>
+											</div>
+																					<div class="w-bloglist-entry">
+												<a class="w-bloglist-entry-link" href="http://www.elcodigofuente.com/desactivar-autoguardado-wordpress-820/">Desactivar Autoguardado en WordPress</a>
+												<span class="w-bloglist-entry-date">8 abril, 2013</span>
+											</div>
+										
+									</div>
+								</div>
+												<div id="comments" class="w-comments has_form">
+	<div class="w-comments-h">
+
+		<h4 class="w-comments-title"><i class="fa fa-comments"></i>2 Comentarios. <a href="#respond">Dejar nuevo</a></h4>
+
+
+		<div class="w-comments-list">
+			
+	<div class="w-comments-item" id="comment-56797">
+		<div class="w-comments-item-meta">
+			<div class="w-comments-item-icon">
+				<img alt='' src='http://1.gravatar.com/avatar/a4312b1f1f5b3c302a35ef327e20114d?s=50&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/a4312b1f1f5b3c302a35ef327e20114d?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' loading='lazy'/>			</div>
+			<div class="w-comments-item-author">santiago bernal</div>
+			<a class="w-comments-item-date" href="#comment-56797">18 junio, 2015 4:54 PM</a>
+		</div>
+		<div class="w-comments-item-text"><p>Estimado, excelente explicación sobre el tema, me aclaró muchas dudas.<br />
+muchas gracias. </p>
+<p>pda: te recomiendo utilizar facebook commets en vez de usar los de wordpress.</p>
+</div>
+		<span class="w-comments-item-answer"><a rel='nofollow' class='comment-reply-link' href='http://www.elcodigofuente.com/truncate-vs-delete-mysql-diferencias-601/?replytocom=56797#respond' data-commentid="56797" data-postid="601" data-belowelement="comment-56797" data-respondelement="respond" data-replyto="Responder a santiago bernal" aria-label='Responder a santiago bernal'>Responder</a></span>	</div>
+
+
+
+	<div class="w-comments-item" id="comment-122100">
+		<div class="w-comments-item-meta">
+			<div class="w-comments-item-icon">
+				<img alt='' src='http://0.gravatar.com/avatar/3d2f45c421cc500f8707571fdb08e590?s=50&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/3d2f45c421cc500f8707571fdb08e590?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' loading='lazy'/>			</div>
+			<div class="w-comments-item-author">David</div>
+			<a class="w-comments-item-date" href="#comment-122100">14 febrero, 2020 10:09 AM</a>
+		</div>
+		<div class="w-comments-item-text"><p>En el punto nº 6 del resúmen de diferencias, se indica: «Ambas se pueden deshacer con un ROLLBACK.», pero he comprobado que en MySQL 8.0.17 no permite hacer ROLLBACK al TRUNCATE table.</p>
+</div>
+		<span class="w-comments-item-answer"><a rel='nofollow' class='comment-reply-link' href='http://www.elcodigofuente.com/truncate-vs-delete-mysql-diferencias-601/?replytocom=122100#respond' data-commentid="122100" data-postid="601" data-belowelement="comment-122100" data-respondelement="respond" data-replyto="Responder a David" aria-label='Responder a David'>Responder</a></span>	</div>
+
+
+		</div>
+
+		<div class="g-pagination">
+								</div>
+
+		
+			<div id="respond" class="w-comments-form">
+								
+						<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Deja una respuesta <small><a rel="nofollow" id="cancel-comment-reply-link" href="/truncate-vs-delete-mysql-diferencias-601/#respond" style="display:none;">Cancelar la respuesta</a></small></h3><form action="http://www.elcodigofuente.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-notes"><span id="email-notes">Tu dirección de correo electrónico no será publicada.</span> Los campos obligatorios están marcados con <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comentario</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Nombre <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Correo electrónico <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Web</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Guarda mi nombre, correo electrónico y web en este navegador para la próxima vez que comente.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Publicar el comentario" /> <input type='hidden' name='comment_post_ID' value='601' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="84a3bf5b53" /></p><input type="hidden" id="ak_js" name="ak_js" value="161"/><textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100" style="display: none !important;"></textarea></form>	</div><!-- #respond -->
+					
+
+			</div>
+		
+
+
+	</div>
+</div>				</div>
+			</div>
+			<div class="l-sidebar at_left">
+				<div class="l-sidebar-h i-widgets">
+									</div>
+			</div>
+
+			<div class="l-sidebar at_right">
+				<div class="l-sidebar-h i-widgets">
+					
+					<div id="custom_html-2" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><a href="http://www.kqzyfj.com/click-8849976-12752412" target="_top" rel="noopener">
+<img src="http://www.awltovhc.com/image-8849976-12752412" width="300" height="250" alt="" border="0"/></a>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Responsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-0883219017533095"
+     data-ad-slot="2496536181"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div>
+		<div id="recent-posts-2" class="widget widget_recent_entries">
+		<h3 class="widgettitle">Entradas recientes</h3>
+		<ul>
+											<li>
+					<a href="http://www.elcodigofuente.com/como-ejecutar-comandos-artisan-desde-consola-git-1004/">Como ejecutar comandos Artisan desde consola Git</a>
+									</li>
+											<li>
+					<a href="http://www.elcodigofuente.com/ejecutar-composer-y-o-php-de-manera-global-en-windows-1008/">Ejecutar Composer y/o PHP de manera Global en Windows</a>
+									</li>
+											<li>
+					<a href="http://www.elcodigofuente.com/herramientas-de-desarrollo-web-994/">Herramientas de Desarrollo Web (sobre todo para Laravel)</a>
+									</li>
+											<li>
+					<a href="http://www.elcodigofuente.com/laravel-5-x-990/">Laravel 5.x</a>
+									</li>
+											<li>
+					<a href="http://www.elcodigofuente.com/obtener-valor-enviado-por-post-o-get-944/">Obtener un Valor enviado ya sea por POST o GET, sino devuelve FALSE o un valor por defecto</a>
+									</li>
+					</ul>
+
+		</div><div id="recent-comments-2" class="widget widget_recent_comments"><h3 class="widgettitle">Comentarios recientes</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">David</span> en <a href="http://www.elcodigofuente.com/como-ejecutar-comandos-artisan-desde-consola-git-1004/#comment-164312">Como ejecutar comandos Artisan desde consola Git</a></li><li class="recentcomments"><span class="comment-author-link">David</span> en <a href="http://www.elcodigofuente.com/leer-archivos-directorio-carpeta-php-812/#comment-154595">Listar los archivos de una directorio o carpeta en PHP</a></li><li class="recentcomments"><span class="comment-author-link">David</span> en <a href="http://www.elcodigofuente.com/truncate-vs-delete-mysql-diferencias-601/#comment-122100">Truncate vs Delete en MySQL (Diferencias)</a></li><li class="recentcomments"><span class="comment-author-link">David</span> en <a href="http://www.elcodigofuente.com/ado-cursores-bloqueos-como-elegirlos-42/#comment-119763">ADO – Cursores, Bloqueos, Como elegirlos</a></li><li class="recentcomments"><span class="comment-author-link">David</span> en <a href="http://www.elcodigofuente.com/como-poner-imagenes-html-512/#comment-117885">Como poner Imagenes en HTML</a></li></ul></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<!-- /MAIN -->
+
+</div>
+</div>
+<!-- /CANVAS -->
+
+<!-- FOOTER -->
+<div class="l-footer type_normal">
+	<div class="l-footer-h">
+				<!-- subfooter: top -->
+<div class="l-subfooter at_top">
+<div class="l-subfooter-h g-cols cols_fluid">
+
+    <div class="one-third">
+        <div id="tag_cloud-2" class="widget widget_tag_cloud"><h4>Etiquetas</h4><div class="tagcloud"><a href="http://www.elcodigofuente.com/tag/ado/" class="tag-cloud-link tag-link-32 tag-link-position-1" style="font-size: 11.230769230769pt;" aria-label="ado (3 elementos)">ado</a>
+<a href="http://www.elcodigofuente.com/tag/ajax/" class="tag-cloud-link tag-link-123 tag-link-position-2" style="font-size: 11.230769230769pt;" aria-label="ajax (3 elementos)">ajax</a>
+<a href="http://www.elcodigofuente.com/tag/apache-1/" class="tag-cloud-link tag-link-166 tag-link-position-3" style="font-size: 11.230769230769pt;" aria-label="apache (3 elementos)">apache</a>
+<a href="http://www.elcodigofuente.com/tag/archivos/" class="tag-cloud-link tag-link-45 tag-link-position-4" style="font-size: 8pt;" aria-label="archivos (2 elementos)">archivos</a>
+<a href="http://www.elcodigofuente.com/tag/base/" class="tag-cloud-link tag-link-33 tag-link-position-5" style="font-size: 8pt;" aria-label="base (2 elementos)">base</a>
+<a href="http://www.elcodigofuente.com/tag/base-de-datos/" class="tag-cloud-link tag-link-111 tag-link-position-6" style="font-size: 11.230769230769pt;" aria-label="base de datos (3 elementos)">base de datos</a>
+<a href="http://www.elcodigofuente.com/tag/basic/" class="tag-cloud-link tag-link-29 tag-link-position-7" style="font-size: 11.230769230769pt;" aria-label="basic (3 elementos)">basic</a>
+<a href="http://www.elcodigofuente.com/tag/basico/" class="tag-cloud-link tag-link-238 tag-link-position-8" style="font-size: 11.230769230769pt;" aria-label="basico (3 elementos)">basico</a>
+<a href="http://www.elcodigofuente.com/tag/binario/" class="tag-cloud-link tag-link-263 tag-link-position-9" style="font-size: 11.230769230769pt;" aria-label="binario (3 elementos)">binario</a>
+<a href="http://www.elcodigofuente.com/tag/codigo/" class="tag-cloud-link tag-link-65 tag-link-position-10" style="font-size: 17.961538461538pt;" aria-label="codigo (6 elementos)">codigo</a>
+<a href="http://www.elcodigofuente.com/tag/crear/" class="tag-cloud-link tag-link-75 tag-link-position-11" style="font-size: 13.923076923077pt;" aria-label="crear (4 elementos)">crear</a>
+<a href="http://www.elcodigofuente.com/tag/datos/" class="tag-cloud-link tag-link-35 tag-link-position-12" style="font-size: 16.076923076923pt;" aria-label="datos (5 elementos)">datos</a>
+<a href="http://www.elcodigofuente.com/tag/decimal/" class="tag-cloud-link tag-link-264 tag-link-position-13" style="font-size: 11.230769230769pt;" aria-label="decimal (3 elementos)">decimal</a>
+<a href="http://www.elcodigofuente.com/tag/ejemplo/" class="tag-cloud-link tag-link-76 tag-link-position-14" style="font-size: 13.923076923077pt;" aria-label="ejemplo (4 elementos)">ejemplo</a>
+<a href="http://www.elcodigofuente.com/tag/eliminar/" class="tag-cloud-link tag-link-209 tag-link-position-15" style="font-size: 16.076923076923pt;" aria-label="eliminar (5 elementos)">eliminar</a>
+<a href="http://www.elcodigofuente.com/tag/error/" class="tag-cloud-link tag-link-12 tag-link-position-16" style="font-size: 8pt;" aria-label="error (2 elementos)">error</a>
+<a href="http://www.elcodigofuente.com/tag/estilo/" class="tag-cloud-link tag-link-144 tag-link-position-17" style="font-size: 11.230769230769pt;" aria-label="estilo (3 elementos)">estilo</a>
+<a href="http://www.elcodigofuente.com/tag/excel/" class="tag-cloud-link tag-link-70 tag-link-position-18" style="font-size: 13.923076923077pt;" aria-label="excel (4 elementos)">excel</a>
+<a href="http://www.elcodigofuente.com/tag/forma/" class="tag-cloud-link tag-link-9 tag-link-position-19" style="font-size: 8pt;" aria-label="forma (2 elementos)">forma</a>
+<a href="http://www.elcodigofuente.com/tag/formulario/" class="tag-cloud-link tag-link-88 tag-link-position-20" style="font-size: 16.076923076923pt;" aria-label="formulario (5 elementos)">formulario</a>
+<a href="http://www.elcodigofuente.com/tag/ftp/" class="tag-cloud-link tag-link-288 tag-link-position-21" style="font-size: 11.230769230769pt;" aria-label="ftp (3 elementos)">ftp</a>
+<a href="http://www.elcodigofuente.com/tag/funciones/" class="tag-cloud-link tag-link-271 tag-link-position-22" style="font-size: 13.923076923077pt;" aria-label="funciones (4 elementos)">funciones</a>
+<a href="http://www.elcodigofuente.com/tag/funcion/" class="tag-cloud-link tag-link-19 tag-link-position-23" style="font-size: 8pt;" aria-label="función (2 elementos)">función</a>
+<a href="http://www.elcodigofuente.com/tag/get/" class="tag-cloud-link tag-link-311 tag-link-position-24" style="font-size: 13.923076923077pt;" aria-label="get (4 elementos)">get</a>
+<a href="http://www.elcodigofuente.com/tag/google/" class="tag-cloud-link tag-link-254 tag-link-position-25" style="font-size: 13.923076923077pt;" aria-label="google (4 elementos)">google</a>
+<a href="http://www.elcodigofuente.com/tag/html-2/" class="tag-cloud-link tag-link-103 tag-link-position-26" style="font-size: 20.653846153846pt;" aria-label="html (8 elementos)">html</a>
+<a href="http://www.elcodigofuente.com/tag/limitar/" class="tag-cloud-link tag-link-51 tag-link-position-27" style="font-size: 8pt;" aria-label="limitar (2 elementos)">limitar</a>
+<a href="http://www.elcodigofuente.com/tag/llamar/" class="tag-cloud-link tag-link-15 tag-link-position-28" style="font-size: 8pt;" aria-label="llamar (2 elementos)">llamar</a>
+<a href="http://www.elcodigofuente.com/tag/manual/" class="tag-cloud-link tag-link-10 tag-link-position-29" style="font-size: 8pt;" aria-label="manual (2 elementos)">manual</a>
+<a href="http://www.elcodigofuente.com/tag/menu/" class="tag-cloud-link tag-link-147 tag-link-position-30" style="font-size: 11.230769230769pt;" aria-label="menu (3 elementos)">menu</a>
+<a href="http://www.elcodigofuente.com/tag/modificar/" class="tag-cloud-link tag-link-16 tag-link-position-31" style="font-size: 11.230769230769pt;" aria-label="modificar (3 elementos)">modificar</a>
+<a href="http://www.elcodigofuente.com/tag/mover/" class="tag-cloud-link tag-link-278 tag-link-position-32" style="font-size: 11.230769230769pt;" aria-label="mover (3 elementos)">mover</a>
+<a href="http://www.elcodigofuente.com/tag/mysql-2/" class="tag-cloud-link tag-link-21 tag-link-position-33" style="font-size: 16.076923076923pt;" aria-label="mysql (5 elementos)">mysql</a>
+<a href="http://www.elcodigofuente.com/tag/objetos/" class="tag-cloud-link tag-link-39 tag-link-position-34" style="font-size: 13.923076923077pt;" aria-label="objetos (4 elementos)">objetos</a>
+<a href="http://www.elcodigofuente.com/tag/parametros/" class="tag-cloud-link tag-link-26 tag-link-position-35" style="font-size: 8pt;" aria-label="parametros (2 elementos)">parametros</a>
+<a href="http://www.elcodigofuente.com/tag/php-2/" class="tag-cloud-link tag-link-98 tag-link-position-36" style="font-size: 22pt;" aria-label="php (9 elementos)">php</a>
+<a href="http://www.elcodigofuente.com/tag/post/" class="tag-cloud-link tag-link-312 tag-link-position-37" style="font-size: 13.923076923077pt;" aria-label="post (4 elementos)">post</a>
+<a href="http://www.elcodigofuente.com/tag/proyecto/" class="tag-cloud-link tag-link-27 tag-link-position-38" style="font-size: 11.230769230769pt;" aria-label="proyecto (3 elementos)">proyecto</a>
+<a href="http://www.elcodigofuente.com/tag/skin/" class="tag-cloud-link tag-link-295 tag-link-position-39" style="font-size: 11.230769230769pt;" aria-label="skin (3 elementos)">skin</a>
+<a href="http://www.elcodigofuente.com/tag/tablas/" class="tag-cloud-link tag-link-120 tag-link-position-40" style="font-size: 11.230769230769pt;" aria-label="tablas (3 elementos)">tablas</a>
+<a href="http://www.elcodigofuente.com/tag/template/" class="tag-cloud-link tag-link-294 tag-link-position-41" style="font-size: 11.230769230769pt;" aria-label="template (3 elementos)">template</a>
+<a href="http://www.elcodigofuente.com/tag/variables/" class="tag-cloud-link tag-link-37 tag-link-position-42" style="font-size: 11.230769230769pt;" aria-label="variables (3 elementos)">variables</a>
+<a href="http://www.elcodigofuente.com/tag/verificar/" class="tag-cloud-link tag-link-454 tag-link-position-43" style="font-size: 13.923076923077pt;" aria-label="verificar (4 elementos)">verificar</a>
+<a href="http://www.elcodigofuente.com/tag/videotutorial/" class="tag-cloud-link tag-link-281 tag-link-position-44" style="font-size: 22pt;" aria-label="videotutorial (9 elementos)">videotutorial</a>
+<a href="http://www.elcodigofuente.com/tag/visual/" class="tag-cloud-link tag-link-31 tag-link-position-45" style="font-size: 11.230769230769pt;" aria-label="visual (3 elementos)">visual</a></div>
+</div>    </div>
+
+    <div class="one-third">
+        <div id="popular-search-terms" class="widget widget_popular_terms"><h4>Más Buscados</h4><ul><li><a href="http://www.elcodigofuente.com/convertir-decimales-binarios-manual-1/" title="conversion de decimal a binario">conversion de decimal a binario</a></li><li><a href="http://www.elcodigofuente.com/convertir-decimales-binarios-manual-1/" title="convertir de decimal a binario">convertir de decimal a binario</a></li><li><a href="http://www.elcodigofuente.com/convertir-decimales-binarios-manual-1/" title="convertir decimal a binario">convertir decimal a binario</a></li><li><a href="http://www.elcodigofuente.com/convertir-decimales-binarios-manual-1/" title="Como convertir de decimal a binario">Como convertir de decimal a binario</a></li><li><a href="http://www.elcodigofuente.com/convertir-decimales-binarios-manual-1/" title="decimal a binario">decimal a binario</a></li><li><a href="http://www.elcodigofuente.com/uso-funcion-isset-php-700/" title="isset php">isset php</a></li><li><a href="http://www.elcodigofuente.com/convertir-decimales-binarios-manual-1/" title="pasar de decimal a binario">pasar de decimal a binario</a></li><li><a href="http://www.elcodigofuente.com/uso-implode-explode-php-107/" title="explode php">explode php</a></li><li><a href="http://www.elcodigofuente.com/convertir-decimales-binarios-manual-1/" title="como pasar de decimal a binario">como pasar de decimal a binario</a></li><li><a href="http://www.elcodigofuente.com/como-usar-variable-session-php-305/" title="$_session">$_session</a></li></ul></div>    </div>
+
+    <div class="one-third">
+        <div id="text-2" class="widget widget_text"><h4>Facebook</h4>			<div class="textwidget"><div class="fb-page" data-href="https://www.facebook.com/DigitalWebPe/" data-hide-cover="true" data-show-facepile="true" data-show-posts="false"></div></div>
+		</div>    </div>
+
+</div>
+</div>
+						<!-- subfooter: bottom -->
+		<div class="l-subfooter at_bottom">
+			<div class="l-subfooter-h i-cf">
+
+				<div class="w-copyright">Copyright © 2015 - El Codigo Fuente. Programación para todos con codigos y algoritmos sencillos y amigables.</div>
+
+				<!-- NAV -->
+				<nav class="w-nav">
+					<div class="w-nav-h">
+
+
+						<div class="w-nav-list layout_hor width_auto float_right level_1">
+													</div>
+					</div>
+				</nav><!-- /NAV -->
+
+			</div>
+		</div>
+		
+	</div>
+</div>
+<!-- /FOOTER -->
+<a class="w-toplink" href="#"><i class="fa fa-angle-up"></i></a>
+<script type="text/javascript">window.mobileNavWidth = "1000";</script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3259243-19', 'auto');
+  ga('send', 'pageview');
+
+</script><script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/themes/Astra/js/g-alert.js?ver=5.7.2' id='us_g-alert-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/themes/Astra/js/jquery.carousello.js?ver=5.7.2' id='us_carousello-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/themes/Astra/js/imagesloaded.js?ver=5.7.2' id='us_imagesloaded-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/themes/Astra/js/jquery.isotope.js?ver=5.7.2' id='us_isotope-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/themes/Astra/js/jquery.magnific-popup.js?ver=5.7.2' id='us_magnific-popup-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/themes/Astra/js/jquery.smoothScroll.js?ver=5.7.2' id='us_smoothScroll-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/themes/Astra/js/jquery.simpleplaceholder.js?ver=5.7.2' id='us_simpleplaceholder-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/themes/Astra/js/w-search.js?ver=5.7.2' id='us_w-search-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/themes/Astra/js/navToSelect.js?ver=5.7.2' id='us_navToSelect-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/themes/Astra/js/w-tabs.js?ver=5.7.2' id='us_w-tabs-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/themes/Astra/js/w-timeline.js?ver=5.7.2' id='us_w-timeline-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/themes/Astra/js/waypoints.min.js?ver=5.7.2' id='us_waypoints-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/themes/Astra/js/jquery.flexslider.js?ver=5.7.2' id='us_flexslider-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/themes/Astra/js/w-lang.js?ver=5.7.2' id='us_w-lang-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/themes/Astra/js/jquery.parallax.js?ver=5.7.2' id='us_parallax-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-content/themes/Astra/js/plugins.js?ver=5.7.2' id='us_plugins-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-includes/js/comment-reply.min.js?ver=5.7.2' id='comment-reply-js'></script>
+<script type='text/javascript' src='http://www.elcodigofuente.com/wp-includes/js/wp-embed.min.js?ver=5.7.2' id='wp-embed-js'></script>
+<script async="async" type='text/javascript' src='http://www.elcodigofuente.com/wp-content/plugins/akismet/_inc/form.js?ver=4.1.9' id='akismet-form-js'></script>
+</body>
+</html>

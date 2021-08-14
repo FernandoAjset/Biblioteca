@@ -1,10 +1,10 @@
 ###¿Cual es el promedio/desviación standard del precio de los libros?
 
-#Los primeros 10 precios de mas caro a mas barato
+#Los primeros 10 precios de mas barato a mas caro
 SELECT title,price FROM books
 ORDER BY price ASC LIMIT 10;
 
-#Los primeros 10 precios de mas barato a mas caro
+#Los primeros 10 precios de mas caro a mas barato
 SELECT title, price FROM books
 ORDER BY price DESC LIMIT 10;
 
@@ -26,7 +26,7 @@ JOIN authors AS a
 GROUP BY nationality;
 
 #Reporte final de transaccion
-SELECT c.name, t.type, b.title, a.name, a.nationality 
+SELECT c.name, t.type, b.title, a.name AS Author_name, a.nationality 
 FROM transactions AS t
 LEFT JOIN clients AS c
     ON c.client_id=t.client_id

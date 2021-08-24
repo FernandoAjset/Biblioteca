@@ -1,7 +1,19 @@
-/1.UMG/HolaMundo/build/
-/1.UMG/HolaMundo/nbproject/private/
-/1.UMG/JuegoTotito_1/nbproject/private/
+# NetBeans specific #
+**/nbproject/private/
 **/build/
-**/private/
-**/target/
+**/nbbuild/
 **/dist/
+**/nbdist/
+**/target/
+**/nbproject/genfiles.properties
+**/nbproject/build-impl.xml
+**/nbactions.xml
+**/nb-configuration.xml
+
+# Class Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear

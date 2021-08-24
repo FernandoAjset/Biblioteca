@@ -1,3 +1,7 @@
 /1.UMG/HolaMundo/build/
 /1.UMG/HolaMundo/nbproject/private/
 /1.UMG/JuegoTotito_1/nbproject/private/
+**/build/
+**/private/
+**/target/
+**/dist/

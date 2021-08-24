@@ -29,9 +29,8 @@ created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP 
     ON UPDATE CURRENT_TIMESTAMP  
 );
-
-que libro,
-que cliente lo lleva,
+#-que libro,
+#que cliente lo lleva,
 
 
 CREATE TABLE IF NOT EXISTS operations(

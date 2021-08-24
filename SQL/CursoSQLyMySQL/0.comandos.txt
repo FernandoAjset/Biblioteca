@@ -1,0 +1,2 @@
+conetar en Ubuntu:
+mysql -h localhost -u root -p

@@ -7,7 +7,7 @@ VALUES('Gabriel García Márquez','COL');
 INSERT INTO authors
 VALUES (NULL,'Juan Gabriel Vasquez','COL');
 
-**VARIAS FILAS A LA VEZ**
+##VARIAS FILAS A LA VEZ**
 
 INSERT INTO authors(name,nationality)
 VALUES ('Julio Cortazar','ARG'),
@@ -27,8 +27,8 @@ VALUES('Pedro Sanchez','Pedro.78522059J@random.names','1992-01-31','M',0)
 ON DUPLICATE KEY UPDATE active=VALUES(active)
 ;
 
-El Laberinto de la Soledad, Octavio Paz, 1952
-Vuelta al Laberinto de la Soledadd, Octavio Paz, 1960
+## El Laberinto de la Soledad, Octavio Paz, 1952
+## Vuelta al Laberinto de la Soledadd, Octavio Paz, 1960
 
 SELECT * FROM authors WHERE name='Octavio Paz';
 
@@ -44,7 +44,7 @@ LIMIT 1),
 );
 
 
-**INSERTAR DESDE ARCHIVO SQL**
-- ABRIR LINEA DE COMANDOS SQL
-TECLEAR EL COMANDO "SOURCE" =  
-source *rutacompleta/usandodiagnoles/normales/con/extension.sql
+## INSERTAR DESDE ARCHIVO SQL**
+## ABRIR LINEA DE COMANDOS SQL
+## TECLEAR EL COMANDO "SOURCE" =  
+## source *rutacompleta/usandodiagnoles/normales/con/extension.sql

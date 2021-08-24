@@ -3,6 +3,10 @@
 -- Host: localhost    Database: pruebaplatzi
 -- ------------------------------------------------------
 -- Server version	8.0.26
+create database library;
+use library;
+
+show databases;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -86,7 +90,7 @@ CREATE TABLE `transactions` (
   `book_id` int unsigned NOT NULL,
   `client_id` int unsigned NOT NULL,
   `type` enum('sell','lend','return') DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NUauthorsauthorsLL DEFAULT CURRENT_TIMESTAMP,
   `modified_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `finished` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`transaction_id`)

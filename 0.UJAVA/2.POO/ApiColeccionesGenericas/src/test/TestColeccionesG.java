@@ -2,7 +2,7 @@ package test;
 
 import java.util.*;
 
-public class TestColeccionesGenericas {
+public class TestColeccionesG {
 
     public static void main(String[] args) {
 

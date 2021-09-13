@@ -128,17 +128,11 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Conexiones.Conexion.setcuenta(usuario.getText(), contraseña.getText());
         Conexiones.Conexion.getConexion();
-        if(Conexiones.Conexion.getstatus())
-        {
+        if (Conexiones.Conexion.getstatus()) {
             proyectopagos.VPrincipal obj = new proyectopagos.VPrincipal();
-            JOptionPane.showMessageDialog(null, "ACCESO CORRECTO\n"+"BIENVENIDO "+usuario.getText().toUpperCase());
+            JOptionPane.showMessageDialog(null, "ACCESO CORRECTO\n" + "BIENVENIDO " + usuario.getText().toUpperCase());
             obj.setVisible(true);
             this.setVisible(false);
-        }else{
-            JOptionPane.showMessageDialog(null, "USUARIO O PASSWORD INCORRECTOS", "ERROR DE CONEXION",JOptionPane.ERROR_MESSAGE);
-            usuario.setText("");
-            contraseña.setText("");
-            usuario.requestFocus();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -147,22 +141,15 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_usuarioActionPerformed
 
     private void contraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contraseñaKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        Conexiones.Conexion.setcuenta(usuario.getText(), contraseña.getText());
-        Conexiones.Conexion.getConexion();
-        if(Conexiones.Conexion.getstatus())
-        {
-            proyectopagos.VPrincipal obj = new proyectopagos.VPrincipal();
-            JOptionPane.showMessageDialog(null, "ACCESO CORRECTO\n"+"BIENVENIDO "+usuario.getText().toUpperCase());
-            obj.setVisible(true);
-            this.setVisible(false);
-        }else{
-            JOptionPane.showMessageDialog(null, "USUARIO O PASSWORD INCORRECTOS", "ERROR DE CONEXION",JOptionPane.ERROR_MESSAGE);
-            usuario.setText("");
-            contraseña.setText("");
-            usuario.requestFocus();
-        }
-            
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Conexiones.Conexion.setcuenta(usuario.getText(), contraseña.getText());
+            Conexiones.Conexion.getConexion();
+            if (Conexiones.Conexion.getstatus()) {
+                proyectopagos.VPrincipal obj = new proyectopagos.VPrincipal();
+                JOptionPane.showMessageDialog(null, "ACCESO CORRECTO\n" + "BIENVENIDO " + usuario.getText().toUpperCase());
+                obj.setVisible(true);
+                this.setVisible(false);
+            }
         }
     }//GEN-LAST:event_contraseñaKeyPressed
 

@@ -4,8 +4,7 @@ import static datos.Conexion.*;
 import domain.Persona;
 import java.sql.*;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  * Clase que realizada operaciones select, update, delete.. sobre la base de
@@ -17,7 +16,7 @@ public class PersonaDAO {
 
     private static final String SQL_SELECT = "SELECT id_persona, nombre, apellido, email, telefono FROM persona";
     private static final String SQL_INSERT = "INSERT INTO persona(nombre,apellido,email,telefono)VALUES(?,?,?,?)";
-    private static final String SQL_UPDATE = "UPDATE persona SET id_persona=?, nombre=?, apellido=?, email=?, telefono=? WHERE id_persona=?";
+    private static final String SQL_UPDATE = "UPDATE persona SET nombre=?, apellido=?, email=?, telefono=? WHERE id_persona=?";
     private static final String SQL_DELETE = "DELETE FROM persona WHERE id_persona=? LIMIT 1";
     public List<Persona> seleccionar() {
         Connection conn = null;
@@ -87,12 +86,11 @@ public class PersonaDAO {
         try {
             conn=getConnection();
             stmt=conn.prepareStatement(SQL_UPDATE);
-            stmt.setInt(1, persona.getIdPersona());
-            stmt.setString(2, persona.getNombre());
-            stmt.setString(3, persona.getApellido());
-            stmt.setString(4, persona.getEmail());
-            stmt.setString(5, persona.getTelefono());
-            stmt.setInt(6, persona.getIdPersona());
+            stmt.setString(1, persona.getNombre());
+            stmt.setString(2, persona.getApellido());
+            stmt.setString(3, persona.getEmail());
+            stmt.setString(4, persona.getTelefono());
+            stmt.setInt(5, persona.getIdPersona());
             registros=stmt.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);

@@ -18,11 +18,19 @@ public class TestManejoUsuarios {
             System.out.println("usuario = " + usuario);
         });
 //
-//      usuarioDao.Insertar(new Usuario("system", "umg2021"));
-        usuarioDao.Actualizar(new Usuario(5, "root", "123456"));
-//      usuarioDao.Eliminar(new Usuario(4));
+            // INSERTANDO USUARIOS
+//          usuarioDao.Insertar(new Usuario("system", "umg2021"));
+//          usuarioDao.Insertar(new Usuario("Admin","145215"));
+//          usuarioDao.Insertar(new Usuario("Edgar", "umg2021"));
+//          usuarioDao.Insertar(new Usuario("HR","0011244"));
+//          usuarioDao.Insertar(new Usuario("root", "umg2021"));
+//          usuarioDao.Insertar(new Usuario("Admin","145215"));
 
-////        
+
+        //usuarioDao.Actualizar(new Usuario(5, "root", "12345678"));
+        usuarioDao.Eliminar(new Usuario(3));
+
+        
         System.out.println("\nTabla actualizada");
         usuarios = usuarioDao.seleccionar();
         usuarios.forEach(usuario -> {

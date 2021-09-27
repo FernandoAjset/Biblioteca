@@ -5,9 +5,10 @@
  */
 package ui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.Timer;
+import conexiones.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,11 +20,11 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
+        this.icono = new ImageIcon(getClass().getResource("/imagenes/ok.png"));
         initComponents();
         transparenciaButton();
-        transparenciaTextField();
-
     }
+    Icon icono;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,17 +35,20 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         login = new javax.swing.JLabel();
         ingreso_user = new javax.swing.JTextField();
-        ingreso_pass = new javax.swing.JTextField();
         salir = new javax.swing.JButton();
         ingresar = new javax.swing.JButton();
         fb1 = new javax.swing.JLabel();
         fb2 = new javax.swing.JLabel();
         user = new javax.swing.JLabel();
         pass = new javax.swing.JLabel();
+        ingreso_pass = new javax.swing.JPasswordField();
         fondo = new javax.swing.JLabel();
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(400, 230));
@@ -52,7 +56,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        login.setIcon(new javax.swing.ImageIcon("/home/ferajset/Programacion/1.UMG/Login/src/main/java/recursos/login.png")); // NOI18N
+        login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/login.png"))); // NOI18N
         login.setText("jLabel2");
         jPanel1.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 152, 150));
 
@@ -62,23 +66,16 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(ingreso_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 210, 30));
-        jPanel1.add(ingreso_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 210, 30));
+        ingreso_user.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingreso_pass.requestFocus();
+            }
+        });
 
         salir.setBackground(new java.awt.Color(0, 0, 153));
         salir.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         salir.setForeground(new java.awt.Color(255, 255, 255));
         salir.setText("Salir");
-        salir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                salirMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                salirMouseExited(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                salirMouseReleased(evt);
-            }
-        });
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);
@@ -90,32 +87,18 @@ public class Login extends javax.swing.JFrame {
         ingresar.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         ingresar.setForeground(new java.awt.Color(255, 255, 255));
         ingresar.setText("Ingresar");
-        ingresar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                ingresarMouseDragged(evt);
-            }
-        });
-        ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ingresarMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ingresarMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                ingresarMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                ingresarMouseReleased(evt);
+        ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarActionPerformed(evt);
             }
         });
         jPanel1.add(ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 110, 30));
 
-        fb1.setIcon(new javax.swing.ImageIcon("/home/ferajset/Programacion/1.UMG/Login/src/main/java/recursos/Botton.png")); // NOI18N
+        fb1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Botton.png"))); // NOI18N
         fb1.setText("jLabel2");
         jPanel1.add(fb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 110, 30));
 
-        fb2.setIcon(new javax.swing.ImageIcon("/home/ferajset/Programacion/1.UMG/Login/src/main/java/recursos/Botton.png")); // NOI18N
+        fb2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Botton.png"))); // NOI18N
         fb2.setText("jLabel2");
         jPanel1.add(fb2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 110, 30));
 
@@ -125,7 +108,29 @@ public class Login extends javax.swing.JFrame {
         pass.setText("Contraseña");
         jPanel1.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, -1, -1));
 
-        fondo.setIcon(new javax.swing.ImageIcon("/home/ferajset/Programacion/1.UMG/Login/src/main/java/recursos/fondo2.png")); // NOI18N
+        ingreso_pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingreso_passActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ingreso_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 210, 30));
+        ingreso_pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingreso_passActionPerformed(evt);
+                if (ingreso_user.getText().equalsIgnoreCase("") || ingreso_pass.getText().equalsIgnoreCase("")) {
+                    JOptionPane.showMessageDialog(null, "No se aceptan campos vacios",
+                        "Error de datos", JOptionPane.ERROR_MESSAGE);
+                    ingreso_user.setText("");
+                    ingreso_pass.setText("");
+                    ingreso_user.requestFocus();
+                } else {
+                    //   useMySql();     //llama a la conexión implementada para MySql
+                    useOracleSql(); //llama a la conexión implementada para OracleSql
+                }
+            }
+        });
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.png"))); // NOI18N
         jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 380));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -143,47 +148,53 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ingreso_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingreso_userActionPerformed
-        // TODO add your handling code here:
 
     }//GEN-LAST:event_ingreso_userActionPerformed
-
+    
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         this.dispose();
     }//GEN-LAST:event_salirActionPerformed
 
-    private void ingresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarMouseClicked
-        ingresar.setContentAreaFilled(true);
-        ingresar.setBorderPainted(false);
+    public void useMySql() {
+        ConexionBD conn = new ConexionMySql_I();
+        conn.getConnection(ingreso_user.getText(), ingreso_pass.getText());
+        if (conn.status() != false) {
+            JOptionPane.showConfirmDialog(null, "Bienvenido " + ingreso_user.getText(), "Acceso Correcto", JOptionPane.CLOSED_OPTION);
+        } else {
+            ingreso_user.setText("");
+            ingreso_pass.setText("");
+        }
+    }
 
-    }//GEN-LAST:event_ingresarMouseClicked
+    public void useOracleSql() {
+        ConexionBD conn = new ConexionOracleSql_I();
+        conn.getConnection(ingreso_user.getText(), ingreso_pass.getText());
+        if (conn.status() != false) {
+            JOptionPane.showConfirmDialog(null, "Bienvenido " + ingreso_user.getText(), "Acceso Correcto", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE, icono);
+        } else {
+            ingreso_user.setText("");
+            ingreso_pass.setText("");
+            ingreso_user.requestFocus();
+        }
+    }
 
-    private void ingresarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarMousePressed
 
-    }//GEN-LAST:event_ingresarMousePressed
+    private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
+        if (ingreso_user.getText().equalsIgnoreCase("") || ingreso_pass.getText().equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(null, "No se aceptan campos vacios",
+                    "Error de datos", JOptionPane.ERROR_MESSAGE);
+            ingreso_user.setText("");
+            ingreso_pass.setText("");
+            ingreso_user.requestFocus();
+        } else {
+            //   useMySql();     //llama a la conexión implementada para MySql
+            useOracleSql(); //llama a la conexión implementada para OracleSql
+        }
+    }//GEN-LAST:event_ingresarActionPerformed
 
-    private void ingresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarMouseExited
-        ingresar.setContentAreaFilled(false);
-    }//GEN-LAST:event_ingresarMouseExited
-
-    private void salirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseExited
-        salir.setContentAreaFilled(false);
-    }//GEN-LAST:event_salirMouseExited
-
-    private void salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseClicked
-        salir.setContentAreaFilled(true);
-    }//GEN-LAST:event_salirMouseClicked
-
-    private void ingresarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarMouseDragged
-
-    }//GEN-LAST:event_ingresarMouseDragged
-
-    private void salirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseReleased
-        salir.setContentAreaFilled(false);
-    }//GEN-LAST:event_salirMouseReleased
-
-    private void ingresarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarMouseReleased
-        ingresar.setContentAreaFilled(false);
-    }//GEN-LAST:event_ingresarMouseReleased
+    private void ingreso_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingreso_passActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ingreso_passActionPerformed
 
     public void transparenciaButton() {
         ingresar.setOpaque(false);
@@ -192,12 +203,6 @@ public class Login extends javax.swing.JFrame {
         salir.setOpaque(false);
         salir.setContentAreaFilled(false);
         salir.setBorderPainted(false);
-    }
-
-    public void transparenciaTextField() {
-        ingreso_user.setOpaque(false);
-        // ingreso_user.setBorderPainted(false);
-        ingreso_pass.setOpaque(false);
     }
 
     /**
@@ -240,9 +245,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel fb2;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton ingresar;
-    private javax.swing.JTextField ingreso_pass;
+    private javax.swing.JPasswordField ingreso_pass;
     private javax.swing.JTextField ingreso_user;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel login;
     private javax.swing.JLabel pass;
     private javax.swing.JButton salir;

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,16 +15,25 @@ import java.util.logging.Logger;
  */
 public class ConexionMySql_I implements ConexionBD{
 
+    static boolean conexion=false;
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/test?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     
     @Override
     public Connection getConnection(String user, String pass) {
+        Connection conn=null;
         try {
-            return DriverManager.getConnection(JDBC_URL, user, pass);
+            conn=DriverManager.getConnection(JDBC_URL, user, pass);
+            conexion=true;
         } catch (SQLException ex) {
-            Logger.getLogger(ConexionMySql_I.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "No Se pudo conectar con la BD " + ex.getMessage(),
+            "Error de Conexion",JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace(System.out);
         }
         return null;
+    }
+    
+    public boolean status(){
+        return this.conexion;
     }
 
     @Override

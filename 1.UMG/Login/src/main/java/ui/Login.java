@@ -36,6 +36,7 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextField1 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
         login = new javax.swing.JLabel();
         ingreso_user = new javax.swing.JTextField();
@@ -49,6 +50,8 @@ public class Login extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
+
+        jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(400, 230));
@@ -248,6 +251,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField ingreso_pass;
     private javax.swing.JTextField ingreso_user;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel login;
     private javax.swing.JLabel pass;

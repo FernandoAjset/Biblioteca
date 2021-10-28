@@ -173,10 +173,10 @@ void celdaMenorCosto(int pMayor, int pfila[3], int pcolumna[5], int datos[3][5],
     }
 }
 
-void distribuir(int indiceMenor[2], int of[3], int d[5], int resultados[3][5])
+void distribuir(int indiceMenor[2], int of[3], int d[5], int resultados[3][5], int datos[3][5])
 {
     //si la oferta en la indiceFila es menor a la demanda en la indiceColumna
-    int indiceFila, indiceColumna;
+    int indiceFila, indiceColumna, fila = 0, columna = 0;
     int oferta, demanda;
     int f, c;
     indiceFila = indiceMenor[0];
@@ -187,13 +187,67 @@ void distribuir(int indiceMenor[2], int of[3], int d[5], int resultados[3][5])
     if (oferta >= demanda)
     {
         cout << "\nSI SE CUBRE LA DEMANDA\n";
-        cout << oferta << " " << demanda;
+        cout << "Oferta= " << oferta << " Demanda= " << demanda << "\n";
         resultados[indiceFila][indiceColumna] = demanda;
         of[indiceFila] = of[indiceFila] - demanda;
         d[indiceColumna] = d[indiceColumna] - demanda;
+
+        //bloquear columna/fila
+    }
+    else
+    {
+        cout << "\nNO SE CUBRE\n";
+        cout << "Oferta= " << oferta << " Demanda= " << demanda << "\n";
+        resultados[indiceFila][indiceColumna] = oferta;
+        of[indiceFila] = 0;
+        d[indiceColumna] = d[indiceColumna] - oferta;
     }
 
+    if (of[indiceFila] == 0)
+    {
+        while (columna < 5)
+        {
+            datos[indiceFila][columna] = 0;
+            columna++;
+        }
+    }
+
+    else if (d[indiceColumna] == 0)
+    {
+        while (fila < 3)
+        {
+            datos[fila][indiceColumna] = 0;
+            fila++;
+        }
+    }
+
+    //Impresion de Matriz completa
+    cout << "\n***Actualizacion de Datos ingresados***\n";
+    for (f = 0; f < 3; f++)
+    {
+        for (c = 0; c < 6; c++)
+        {
+            //Validacion para imprimir la ultima columna(Oferta)
+            if (c > 4)
+            {
+                cout << of[f];
+            }
+            else
+            {
+                cout << datos[f][c] << "\t";
+            }
+        }
+        cout << "\n";
+    }
+    //Imprime la ultima fila(Demanda)
+    for (int i = 0; i < 5; i++)
+    {
+        cout << d[i] << "\t";
+    }
+    cout << "\n";
+
     //Impresion de Matriz Resultados
+    cout << "\n***Actualizacion de Resultados***\n";
     for (f = 0; f < 3; f++)
     {
         for (c = 0; c < 6; c++)
@@ -309,7 +363,7 @@ int main()
     cout << "fila " << indiceMenor[0] + 1 << " columna " << indiceMenor[1] + 1;
 
     cout << "\n***INGRESANDO DISTRIBUCION***\n";
-    distribuir(indiceMenor, of, d, resultados);
+    distribuir(indiceMenor, of, d, resultados, datos);
 
     getch();
     return 0;

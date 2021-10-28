@@ -173,14 +173,68 @@ void celdaMenorCosto(int pMayor, int pfila[3], int pcolumna[5], int datos[3][5],
     }
 }
 
+void distribuir(int indiceMenor[2], int of[3], int d[5], int resultados[3][5])
+{
+    //si la oferta en la indiceFila es menor a la demanda en la indiceColumna
+    int indiceFila, indiceColumna;
+    int oferta, demanda;
+    int f, c;
+    indiceFila = indiceMenor[0];
+    indiceColumna = indiceMenor[1];
+    oferta = of[indiceFila];
+    demanda = d[indiceColumna];
+
+    if (oferta >= demanda)
+    {
+        cout << "\nSI SE CUBRE LA DEMANDA\n";
+        cout << oferta << " " << demanda;
+        resultados[indiceFila][indiceColumna] = demanda;
+        of[indiceFila] = of[indiceFila] - demanda;
+        d[indiceColumna] = d[indiceColumna] - demanda;
+    }
+
+    //Impresion de Matriz Resultados
+    for (f = 0; f < 3; f++)
+    {
+        for (c = 0; c < 6; c++)
+        {
+            //Validacion para imprimir la ultima columna(Oferta)
+            if (c > 4)
+            {
+                cout << of[f];
+            }
+            else
+            {
+                cout << resultados[f][c] << "\t";
+            }
+        }
+        cout << "\n";
+    }
+    //Imprime la ultima fila(Demanda)
+    for (int i = 0; i < 5; i++)
+    {
+        cout << d[i] << "\t";
+    }
+    cout << "\n";
+}
+
 //*****************INICIO DEL MAIN**********************
 //******************************************************
 int main()
 {
     int pfila[3], pcolumna[5], indiceMenor[2];
     int pMayor = 0, fila = 0, columna = 0;
-    int datos[3][5];
+    int datos[3][5], resultados[3][5];
     int f = 0, c = 0, of[3], d[5];
+
+    //Inicializando matriz resultados
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            resultados[i][j] = 0;
+        }
+    }
 
     //Ingreso de costos
     for (f = 0; f < 3; f++)
@@ -253,6 +307,10 @@ int main()
     cout << "\n***CELDA MENOR COSTO***\n";
     celdaMenorCosto(pMayor, pfila, pcolumna, datos, indiceMenor);
     cout << "fila " << indiceMenor[0] + 1 << " columna " << indiceMenor[1] + 1;
+
+    cout << "\n***INGRESANDO DISTRIBUCION***\n";
+    distribuir(indiceMenor, of, d, resultados);
+
     getch();
     return 0;
 }

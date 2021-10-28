@@ -4,6 +4,8 @@
 #include <iostream>
 #include <conio.h>
 #include <cmath>
+#include <stdbool.h>
+
 using namespace std;
 
 void penalidadFila(int datos[3][5], int pfila[3])
@@ -105,96 +107,80 @@ int penalidadMayor(int pfila[3], int pcolumna[5])
         mayorp = mayorcolumna;
     }
     return mayorp;
-
 }
 
-void celdaMenorCosto(int pfila[3], int pcolumna[5], int datos[3][5], int pMayor, int indicef, int indicec)
+void celdaMenorCosto(int pMayor, int pfila[3], int pcolumna[5], int datos[3][5], int indiceMenor[2])
 {
-    boolean enFila;
-    boolean enColumna;
-    int numero, menor, fila, columna;
-
-//Recorrido pFila
+    bool enFila;
+    bool enColumna;
+    int numero, menor;
+    int fila, columna;
+    int f, c;
+    int cont = 0;
+    //Recorrido pFila
     for (int i = 0; i < 3; i++)
     {
         if (pfila[i] == pMayor)
         {
             fila = i;
             enFila = true;
+            cout << "encontrado en fila " << fila << "\n";
         }
     }
 
-//Recorrido pColumna
+    //Recorrido pColumna
     for (int i = 0; i < 5; i++)
     {
         if (pcolumna[i] == pMayor)
         {
             columna = i;
             enColumna = true;
+            //   cout << "encontrado en columna " << columna << "\n";
         }
     }
 
+    // cout<<"\n"<<enFila;
+    // cout<<"\n"<<enColumna;
     if (enFila)
     {
-        for (int f = fila; f < fila; f++)
-        {
-            for (int c = 0; c < 5; c++)
-            {
-                numero = datos[f][c];
-                if (c == 0)
-                {
-                    menor = numero;
-                    indicef = f;
-                    indicec = c;
-                }
-                else
-                {
-                    if (numero < menor)
-                    {
-                        indicef = f;
-                        indicec = c;
-                    }
-                }
-            }
-        }
+        cout << "\nBuscar en fila " << fila << "\n";
     }
     else if (enColumna)
     {
-        for (int c = columna; c < columna; c++)
+        do
         {
-            for (int f = 0; f < 3; f++)
+            numero = datos[cont][columna];
+            if (cont == 0)
             {
-                numero = datos[f][c];
-                if (f == 0)
+                menor = numero;
+                f = cont;
+                c = columna;
+            }
+            else
+            {
+                if (menor > numero)
                 {
                     menor = numero;
-                    indicef = f;
-                    indicec = c;
-                }
-                else
-                {
-                    if (numero < menor)
-                    {
-                        menor = numero;
-                        indicef = f;
-                        indicec = c;
-                    }
+                    f = cont;
+                    c = columna;
                 }
             }
-        }
+            cont++;
+        } while (cont < 3);
+        // cout << f << " " << c << "\n";
+        indiceMenor[0] = f;
+        indiceMenor[1] = c;
     }
-
-    cout<<"\nfila "<<indicef<<" columna "<<indicec;
 }
 
 //*****************INICIO DEL MAIN**********************
 //******************************************************
 int main()
 {
-    int pfila[3], pcolumna[5];
-    int pMayor=0, fila=0, columna=0;
+    int pfila[3], pcolumna[5], indiceMenor[2];
+    int pMayor = 0, fila = 0, columna = 0;
     int datos[3][5];
-    int f=0, c=0, of[3], d[5];
+    int f = 0, c = 0, of[3], d[5];
 
     //Ingreso de costos
     for (f = 0; f < 3; f++)
@@ -243,6 +229,7 @@ int main()
     {
         cout << d[i] << "\t";
     }
+    cout << "\n";
 
     cout << "\n***Penalidades Fila***\n";
     penalidadFila(datos, pfila);
@@ -258,14 +245,14 @@ int main()
         cout << "Penalidad " << i + 1 << " : " << pcolumna[i] << "\t";
     }
     cout << "\n***PENALIDAD MAYOR***\n";
-    cout<<penalidadMayor(pfila, pcolumna);
-    pMayor=penalidadMayor(pfila,pcolumna);
-    cout<<"\n"<<pMayor;
+    //cout << penalidadMayor(pfila, pcolumna);
+    pMayor = penalidadMayor(pfila, pcolumna);
+    cout << "\n"
+         << pMayor;
 
-   /* cout << "\n***CELDA MENOR COSTO***\n";
-    celdaMenorCosto(pfila, pcolumna, datos, pMayor, fila, columna);
-    cout << "fila " << fila << " columna " << columna;
-*/
+    cout << "\n***CELDA MENOR COSTO***\n";
+    celdaMenorCosto(pMayor, pfila, pcolumna, datos, indiceMenor);
+    cout << "fila " << indiceMenor[0] + 1 << " columna " << indiceMenor[1] + 1;
     getch();
     return 0;
 }

@@ -74,6 +74,10 @@ void penalidadColumna(int datos[3][5], int pcolumna[5])
             if (numero != 0)
             {
                 aux = datos[f + 1][ronda];
+                if (aux == 0)
+                {
+                    aux = datos[f + 2][ronda];
+                }
                 if (f == 0)
                 {
                     menor = numero;
@@ -152,8 +156,8 @@ void celdaMenorCosto(int pMayor, int pfila[3], int pcolumna[5], int datos[3][5],
 {
     bool enFila;
     bool enColumna;
-    int numero, menor;
-    int fila, columna;
+    int numero = 0, menor = 0;
+    int fila = 0, columna = 0;
     int f = 0, c = 0;
     int cont = 0;
     //Recorrido pFila
@@ -163,7 +167,7 @@ void celdaMenorCosto(int pMayor, int pfila[3], int pcolumna[5], int datos[3][5],
         {
             fila = i;
             enFila = true;
-            cout << "encontrado en fila " << fila << "\n";
+            //cout << "encontrado en fila " << fila << "\n";
         }
     }
 
@@ -182,46 +186,67 @@ void celdaMenorCosto(int pMayor, int pfila[3], int pcolumna[5], int datos[3][5],
     // cout<<"\n"<<enColumna;
     if (enFila)
     {
-        cout << "\nBuscar en fila " << fila << "\n";
+        //cout << "\nBuscar en fila " << fila << "\n";
         do
         {
             numero = datos[fila][cont];
-            if (cont == 0)
+            if (numero != 0)
             {
-                menor = numero;
-                f = fila;
-                c = cont;
-            }
-            else
-            {
-                if (menor > numero)
+                if (cont == 0)
                 {
                     menor = numero;
                     f = fila;
                     c = cont;
                 }
+                else
+                {
+                    if (menor > numero)
+                    {
+                        menor = numero;
+                        f = fila;
+                        c = cont;
+                    }
+                    else if (menor == 0)
+                    {
+                        menor = numero;
+                        f = fila;
+                        c = cont;
+                    }
+                }
             }
             cont++;
         } while (cont < 5);
+        // cout << f << " " << c << "\n";
+        indiceMenor[0] = f;
+        indiceMenor[1] = c;
     }
     else if (enColumna)
     {
         do
         {
             numero = datos[cont][columna];
-            if (cont == 0)
+            if (numero != 0)
             {
-                menor = numero;
-                f = cont;
-                c = columna;
-            }
-            else
-            {
-                if (menor > numero)
+                if (cont == 0)
                 {
                     menor = numero;
                     f = cont;
                     c = columna;
+                }
+                else
+                {
+                    if (menor > numero)
+                    {
+                        menor = numero;
+                        f = cont;
+                        c = columna;
+                    }
+                    else if (menor == 0)
+                    {
+                        menor = numero;
+                        f = fila;
+                        c = cont;
+                    }
                 }
             }
             cont++;
@@ -448,7 +473,7 @@ int main()
         cout << "\n***INGRESANDO DISTRIBUCION***\n";
         distribuir(indiceMenor, of, d, resultados, datos);
         cont++;
-    } while (cont < 5); //demandaSatisfecha(d));
+    } while (cont < 7); //demandaSatisfecha(d));
 
     pMayor = 0;
     getch();

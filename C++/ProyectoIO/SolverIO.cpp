@@ -10,10 +10,9 @@ using namespace std;
 
 void penalidadFila(int datos[3][5], int pfila[3])
 {
-    int menor = -1, segundo = 0, aux = 0, numero, penalidad;
+    int menor = 0, segundo = 0, aux = 0, numero, penalidad;
     for (int f = 0; f < 3; f++)
     {
-        menor, segundo;
         for (int c = 0; c < 5; c++)
         {
             numero = datos[f][c];
@@ -27,26 +26,38 @@ void penalidadFila(int datos[3][5], int pfila[3])
                 }
                 else
                 {
-                    if (menor == -1 && numero != 0)
+                    if (menor == 0)
                     {
-                        menor = numero;
-                        segundo = aux;
+                        if (datos[f][c] < datos[f][c + 1])
+                        {
+                            menor = datos[f][c];
+                            segundo = datos[f][c + 1];
+                        }
+                        else
+                        {
+                            menor = datos[f][c + 1];
+                            segundo = datos[f][c];
+                        }
+                       // cout << "***MENOR " << menor << " ***SEGUNDO " << segundo;
                     }
-
-                    if (numero < menor)
+                    else if (numero != menor)
                     {
-                        segundo = menor;
-                        menor = numero;
-                    }
-                    else if (numero < segundo)
-                    {
-                        segundo = numero;
+                        if (numero < menor)
+                        {
+                            segundo = menor;
+                            menor = numero;
+                        }
+                        else if (numero < segundo)
+                        {
+                            segundo = numero;
+                        }
                     }
                 }
             }
         }
         penalidad = menor - segundo;
         pfila[f] = abs(penalidad);
+        menor = 0;
     }
 }
 
@@ -435,7 +446,7 @@ int main()
         cout << "\n***INGRESANDO DISTRIBUCION***\n";
         distribuir(indiceMenor, of, d, resultados, datos);
         cont++;
-    } while (cont < 2); //demandaSatisfecha(d));
+    } while (cont < 4); //demandaSatisfecha(d));
 
     pMayor = 0;
     getch();

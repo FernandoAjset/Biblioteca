@@ -10,10 +10,10 @@ using namespace std;
 
 void penalidadFila(int datos[3][5], int pfila[3])
 {
-    int menor = 0, segundo = 0, aux = 0, numero, penalidad;
+    int menor = -1, segundo = 0, aux = 0, numero, penalidad;
     for (int f = 0; f < 3; f++)
     {
-        menor = 0, segundo = 0;
+        menor, segundo;
         for (int c = 0; c < 5; c++)
         {
             numero = datos[f][c];
@@ -27,6 +27,12 @@ void penalidadFila(int datos[3][5], int pfila[3])
                 }
                 else
                 {
+                    if (menor == -1 && numero != 0)
+                    {
+                        menor = numero;
+                        segundo = aux;
+                    }
+
                     if (numero < menor)
                     {
                         segundo = menor;
@@ -135,7 +141,7 @@ void celdaMenorCosto(int pMayor, int pfila[3], int pcolumna[5], int datos[3][5],
     bool enColumna;
     int numero, menor;
     int fila, columna;
-    int f, c;
+    int f = 0, c = 0;
     int cont = 0;
     //Recorrido pFila
     for (int i = 0; i < 3; i++)
@@ -164,6 +170,26 @@ void celdaMenorCosto(int pMayor, int pfila[3], int pcolumna[5], int datos[3][5],
     if (enFila)
     {
         cout << "\nBuscar en fila " << fila << "\n";
+        do
+        {
+            numero = datos[fila][cont];
+            if (cont == 0)
+            {
+                menor = numero;
+                f = fila;
+                c = cont;
+            }
+            else
+            {
+                if (menor > numero)
+                {
+                    menor = numero;
+                    f = fila;
+                    c = cont;
+                }
+            }
+            cont++;
+        } while (cont < 5);
     }
     else if (enColumna)
     {
@@ -382,6 +408,8 @@ int main()
     do
     {
         pMayor = 0;
+        indiceMenor[0] = 0, indiceMenor[1] = 0;
+        columna = 0;
         cout << "\n***Penalidades Fila***\n";
         penalidadFila(datos, pfila);
         for (int i = 0; i < 3; i++)
@@ -402,7 +430,7 @@ int main()
 
         cout << "\n***CELDA MENOR COSTO***\n";
         celdaMenorCosto(pMayor, pfila, pcolumna, datos, indiceMenor);
-        cout << "fila " << indiceMenor[0] + 1 << " columna " << indiceMenor[1] + 1;
+        cout << "fila " << indiceMenor[0] << " columna " << indiceMenor[1];
 
         cout << "\n***INGRESANDO DISTRIBUCION***\n";
         distribuir(indiceMenor, of, d, resultados, datos);

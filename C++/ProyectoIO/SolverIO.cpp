@@ -87,7 +87,7 @@ void penalidadColumna(int datos[3][5], int pcolumna[5])
     }
 }
 
-int penalidadMayor(int pfila[3], int pcolumna[5])
+int penalidadMayor(int pfila[3], int pcolumna[5], int pMayor)
 {
     int contador;
     int numero = 0;
@@ -115,13 +115,18 @@ int penalidadMayor(int pfila[3], int pcolumna[5])
 
     if (mayorfila > mayorcolumna)
     {
-        numero = mayorfila;
+        pMayor = mayorfila;
     }
     else if (mayorcolumna > mayorfila)
     {
-        numero = mayorcolumna;
+        pMayor = mayorcolumna;
     }
-    return numero;
+    else if (mayorfila == mayorcolumna)
+    {
+        pMayor = mayorfila;
+    }
+    // cout<<"\nPMAYOR ASIGNADO: "<<pMayor<<"\n";
+    return pMayor;
 }
 
 void celdaMenorCosto(int pMayor, int pfila[3], int pcolumna[5], int datos[3][5], int indiceMenor[2])
@@ -302,6 +307,7 @@ bool demandaSatisfecha(int d[5])
 
     return r;
 }
+
 //*****************INICIO DEL MAIN**********************
 //******************************************************
 int main()
@@ -375,6 +381,7 @@ int main()
 
     do
     {
+        pMayor = 0;
         cout << "\n***Penalidades Fila***\n";
         penalidadFila(datos, pfila);
         for (int i = 0; i < 3; i++)
@@ -389,9 +396,7 @@ int main()
             cout << "Penalidad " << i + 1 << " : " << pcolumna[i] << "\t";
         }
         cout << "\n***PENALIDAD MAYOR***\n";
-        //cout << penalidadMayor(pfila, pcolumna);
-        //pMayor = 0;
-        pMayor = penalidadMayor(pfila, pcolumna);
+        pMayor = penalidadMayor(pfila, pcolumna, pMayor);
         cout << "\n"
              << pMayor;
 
@@ -403,6 +408,8 @@ int main()
         distribuir(indiceMenor, of, d, resultados, datos);
         cont++;
     } while (cont < 2); //demandaSatisfecha(d));
+
+    pMayor = 0;
     getch();
     return 0;
 }

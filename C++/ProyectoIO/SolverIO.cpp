@@ -10,7 +10,7 @@ using namespace std;
 
 void penalidadFila(int datos[3][5], int pfila[3])
 {
-    int menor = 0, segundo = 0, aux = 0, numero, penalidad;
+    int menor = 0, segundo = 0, aux = 0, numero = 0, penalidad = 0;
     for (int f = 0; f < 3; f++)
     {
         for (int c = 0; c < 5; c++)
@@ -38,7 +38,7 @@ void penalidadFila(int datos[3][5], int pfila[3])
                             menor = datos[f][c + 1];
                             segundo = datos[f][c];
                         }
-                       // cout << "***MENOR " << menor << " ***SEGUNDO " << segundo;
+                        // cout << "***MENOR " << menor << " ***SEGUNDO " << segundo;
                     }
                     else if (numero != menor)
                     {
@@ -58,6 +58,7 @@ void penalidadFila(int datos[3][5], int pfila[3])
         penalidad = menor - segundo;
         pfila[f] = abs(penalidad);
         menor = 0;
+        segundo = 0, aux = 0, numero = 0, penalidad = 0;
     }
 }
 
@@ -101,14 +102,15 @@ void penalidadColumna(int datos[3][5], int pcolumna[5])
             penalidad = menor - segundo;
             pcolumna[ronda] = abs(penalidad);
         }
+        menor = 0, segundo = 0, aux = 0, numero = 0, penalidad = 0, f = 0;
     }
 }
 
 int penalidadMayor(int pfila[3], int pcolumna[5], int pMayor)
 {
-    int contador;
+    int contador = 0;
     int numero = 0;
-    int mayorfila, mayorcolumna;
+    int mayorfila = 0, mayorcolumna = 0;
     while (contador <= 3)
     {
         numero = pfila[contador];
@@ -446,7 +448,7 @@ int main()
         cout << "\n***INGRESANDO DISTRIBUCION***\n";
         distribuir(indiceMenor, of, d, resultados, datos);
         cont++;
-    } while (cont < 4); //demandaSatisfecha(d));
+    } while (cont < 5); //demandaSatisfecha(d));
 
     pMayor = 0;
     getch();

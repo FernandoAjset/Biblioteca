@@ -5,8 +5,10 @@
 #include <conio.h>
 #include <cmath>
 #include <stdbool.h>
+#include <string>
 
 using namespace std;
+#define STRING(num) #num
 
 void penalidadFila(int datos[3][5], int pfila[3])
 {
@@ -360,7 +362,7 @@ bool demandaSatisfecha(int d[5])
 {
     bool r = false;
     int numero;
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 5; i++)
     {
         numero = d[i];
     }
@@ -372,6 +374,31 @@ bool demandaSatisfecha(int d[5])
     return r;
 }
 
+void Multip(int resultados[3][5])
+{
+    int auxdatos[3][5] = {{1200, 2500, 2300, 2200, 4000}, {2200, 1500, 2000, 1800, 3500}, {4000, 3500, 3200, 3400, 1000}};
+    int product[3][5] = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}};
+    int total = 0;
+    string cadena;
+    string por = "*";
+    string cadena2;
+
+    for (int row = 0; row < 3; row++)
+    {
+        for (int col = 0; col < 5; col++)
+        {
+            product[row][col] = auxdatos[row][col] * resultados[row][col];
+            cout << product[row][col] << "\t";
+            total = total + product[row][col];
+        }
+        cout << "\n";
+    }
+    cout << "\n**********COSTO TOTAL DE TRANSPORTE**********"
+         << "\n\n";
+    //cout << "Z = x1+x2+x3+x4+x5+x6+x7+x8+x9+x10+x1+x12+x13+x14+x15\n";
+    cout << "Z = " << total;
+}
+
 //*****************INICIO DEL MAIN**********************
 //******************************************************
 int main()
@@ -381,6 +408,7 @@ int main()
     int resultados[3][5];
     int f = 0, c = 0, cp = 1;
     int datos[3][5] = {{1200, 2500, 2300, 2200, 4000}, {2200, 1500, 2000, 1800, 3500}, {4000, 3500, 3200, 3400, 1000}};
+    int auxdatos[3][5] = {{1200, 2500, 2300, 2200, 4000}, {2200, 1500, 2000, 1800, 3500}, {4000, 3500, 3200, 3400, 1000}};
     int of[3] = {300, 230, 170};
     int d[5] = {230, 100, 170, 150, 50};
     int cont = 0;
@@ -392,31 +420,6 @@ int main()
             resultados[i][j] = 0;
         }
     }
-    /*
-    
-    for (f = 0; f < 3; f++)
-    {
-        for (c = 0; c < 5; c++)
-        {
-            cout << "Ingrese dato de la fila " << f + 1 << " columna " << c + 1 << " : ";
-            cin >> datos[f][c];
-        }
-    }
-
-    
-    for (int i = 0; i < 3; i++)
-    {
-        cout << "Ingrese la oferta " << i + 1 << " : ";
-        cin >> of[i];
-    }
-
-    
-    for (int i = 0; i < 5; i++)
-    {
-        cout << "Ingrese la Demanda " << i + 1 << " : ";
-        cin >> d[i];
-    }
-    */
 
     //CICLO REPETITIVO, CALCULA 6 PENALIDADES
     do
@@ -460,7 +463,7 @@ int main()
         cout << "D\t";
         for (int i = 0; i < 5; i++)
         {
-            cout <<d[i] << "\t";
+            cout << d[i] << "\t";
         }
         cout << "\n";
         //Imprimer las penalidades columna
@@ -476,7 +479,7 @@ int main()
 
         cout << "\n***CELDA MENOR COSTO***\n";
         celdaMenorCosto(pMayor, pfila, pcolumna, datos, indiceMenor);
-        cout << "fila " << indiceMenor[0]+1 << " columna " << indiceMenor[1]+1 << "\n";
+        cout << "fila " << indiceMenor[0] + 1 << " columna " << indiceMenor[1] + 1 << "\n";
 
         cout << "\n***INGRESANDO DISTRIBUCION***\n";
         distribuir(indiceMenor, of, d, resultados, datos);
@@ -484,7 +487,13 @@ int main()
         cp++;
     } while (cont < 7); //demandaSatisfecha(d));
 
-    pMayor = 0;
+    if (demandaSatisfecha)
+    {
+        cout << "\n\n**********MATRIZ DE COSTOS**********\n\n";
+        Multip(resultados);
+    }
+
+    //pMayor = 0;
     getch();
     return 0;
 }

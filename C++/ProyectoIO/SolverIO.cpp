@@ -300,9 +300,17 @@ void distribuir(int indiceMenor[2], int of[3], int d[5], int resultados[3][5], i
         }
     }
     //Impresion de Matriz Resultados
-    cout << "\n***Actualizando Tablero de Resultados***\n";
+    cout << "\n***Actualizando Tablero de Asignaciones para esta penalidad***\n";
+            cout << "BOD\t"
+             << "ES\t"
+             << "RE\t"
+             << "SU\t"
+             << "SA\t"
+             << "PE\t"
+             << "OF\t\n";
     for (f = 0; f < 3; f++)
     {
+        cout << "SU" << f + 1 << "\t";
         for (c = 0; c < 6; c++)
         {
             //Validacion para imprimir la ultima columna(Oferta)
@@ -318,6 +326,7 @@ void distribuir(int indiceMenor[2], int of[3], int d[5], int resultados[3][5], i
         cout << "\n";
     }
     //Imprime la ultima fila(Demanda)
+    cout << "D\t";
     for (int i = 0; i < 5; i++)
     {
         cout << d[i] << "\t";
@@ -352,9 +361,15 @@ void Multip(int resultados[3][5], int auxdatos[3][5])
     string cadena;
     string por = "*";
     string cadena2;
-
+    cout << "BOD\t"
+             << "ES\t"
+             << "RE\t"
+             << "SU\t"
+             << "SA\t"
+             << "PE\t\n";
     for (int row = 0; row < 3; row++)
     {
+        cout << "SU" << row + 1 << "\t";
         for (int col = 0; col < 5; col++)
         {
             product[row][col] = auxdatos[row][col] * resultados[row][col];
@@ -379,7 +394,7 @@ int main()
     /*EN LA MATRIZ DATOS SE DEFINEN LOS COSTOS DE TRANSPORTE, MATRIZ AUXILIAR ES UNA COPIA DE DATOS PARA USARLOS AL FINAL CON EL
     TABLERO DE ASIGNACIONES, MATRIZ OF DEFINE LAS OFERTAS, MATRIZ D DEFINE LAS DEMANDAS.*/
     int datos[3][5] = {{1200, 2500, 2300, 2200, 4000}, {2200, 1500, 2000, 1800, 3500}, {4000, 3500, 3200, 3400, 1000}};
-    int auxdatos[3][5] = {{1200, 2500, 2300, 2200, 4000}, {2200, 1500, 2000, 1800, 3500}, {4000, 3500, 3200, 3400, 1000}};
+    int auxdatos[3][5] = {{1200, 2500, 2300, 2200, 4000}, {2200, 1500, 2000, 1800, 3500}, {4000, 3500, 3200, 3400, 1000}}; //ESTA MATRIZ DEBE SER UNA COPIA EXACTA DE MATRIZ DATOS
     int of[3] = {300, 230, 170};
     int d[5] = {230, 100, 170, 150, 50};
     int cont = 0;
@@ -401,8 +416,12 @@ int main()
 
         penalidadFila(datos, pfila);
         penalidadColumna(datos, pcolumna);
+        cout << "---------------------------------------------------------------------------------------------------------------------------\n";
+        cout << "\t\t\t"
+             << "CALCULOS PARA PENALIDAD " << cp;
+        cout << "\n---------------------------------------------------------------------------------------------------------------------------\n";
         //Impresion de Matriz completa
-        cout << "\n***Matriz de datos***\n";
+        cout << "\n***Matriz de costos (Los ceros representa que la fila/columna esta bloqueada por haberse satisfecho)***\n";
         cout << "BOD\t"
              << "ES\t"
              << "RE\t"
@@ -457,12 +476,15 @@ int main()
         cont++;
         cp++;
         demandaSatisfecha(d);
-    } while (demandaSatisfecha(d) == 0); 
+    } while (demandaSatisfecha(d) == 0);
 
-    cout << "\n\n**********MATRIZ DE COSTOS**********\n\n";
+    cout << "---------------------------------------------------------------------------------------------------------------------------\n";
+    cout << "\t\t\t"
+         << "RESULTADOS EN COSTOS";
+    cout << "\n---------------------------------------------------------------------------------------------------------------------------\n";
+    cout << "\n**********MATRIZ DE COSTOS**********\n\n";
     Multip(resultados, auxdatos);
 
-    //pMayor = 0;
     getch();
     return 0;
 }

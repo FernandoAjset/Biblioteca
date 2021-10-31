@@ -40,7 +40,6 @@ void penalidadFila(int datos[3][5], int pfila[3])
                             menor = datos[f][c + 1];
                             segundo = datos[f][c];
                         }
-                        // cout << "***MENOR " << menor << " ***SEGUNDO " << segundo;
                     }
                     else if (numero != menor)
                     {
@@ -150,7 +149,6 @@ int penalidadMayor(int pfila[3], int pcolumna[5], int pMayor)
     {
         pMayor = mayorfila;
     }
-    // cout<<"\nPMAYOR ASIGNADO: "<<pMayor<<"\n";
     return pMayor;
 }
 
@@ -184,8 +182,6 @@ void celdaMenorCosto(int pMayor, int pfila[3], int pcolumna[5], int datos[3][5],
         }
     }
 
-    // cout<<"\n"<<enFila;
-    // cout<<"\n"<<enColumna;
     if (enFila)
     {
         //cout << "\nBuscar en fila " << fila << "\n";
@@ -218,7 +214,6 @@ void celdaMenorCosto(int pMayor, int pfila[3], int pcolumna[5], int datos[3][5],
             }
             cont++;
         } while (cont < 5);
-        // cout << f << " " << c << "\n";
         indiceMenor[0] = f;
         indiceMenor[1] = c;
     }
@@ -253,7 +248,6 @@ void celdaMenorCosto(int pMayor, int pfila[3], int pcolumna[5], int datos[3][5],
             }
             cont++;
         } while (cont < 3);
-        // cout << f << " " << c << "\n";
         indiceMenor[0] = f;
         indiceMenor[1] = c;
     }
@@ -261,7 +255,6 @@ void celdaMenorCosto(int pMayor, int pfila[3], int pcolumna[5], int datos[3][5],
 
 void distribuir(int indiceMenor[2], int of[3], int d[5], int resultados[3][5], int datos[3][5])
 {
-    //si la oferta en la indiceFila es menor a la demanda en la indiceColumna
     int indiceFila, indiceColumna, fila = 0, columna = 0;
     int oferta, demanda;
     int f, c;
@@ -306,32 +299,6 @@ void distribuir(int indiceMenor[2], int of[3], int d[5], int resultados[3][5], i
             fila++;
         }
     }
-    /*
-    //Impresion de Matriz completa
-    cout << "\n***Actualizacion de Datos ingresados***\n";
-    for (f = 0; f < 3; f++)
-    {
-        for (c = 0; c < 6; c++)
-        {
-            //Validacion para imprimir la ultima columna(Oferta)
-            if (c > 4)
-            {
-                cout << of[f];
-            }
-            else
-            {
-                cout << datos[f][c] << "\t";
-            }
-        }
-        cout << "\n";
-    }
-    //Imprime la ultima fila(Demanda)
-    for (int i = 0; i < 5; i++)
-    {
-        cout << d[i] << "\t";
-    }
-    cout << "\n";
-*/
     //Impresion de Matriz Resultados
     cout << "\n***Actualizando Tablero de Resultados***\n";
     for (f = 0; f < 3; f++)
@@ -360,23 +327,26 @@ void distribuir(int indiceMenor[2], int of[3], int d[5], int resultados[3][5], i
 
 bool demandaSatisfecha(int d[5])
 {
-    bool r = false;
-    int numero;
+    bool r = 0;
+    int valor = 0;
     for (int i = 0; i < 5; i++)
     {
-        numero = d[i];
-    }
-    if (numero != 0)
-    {
-        r = true;
+        valor += d[i];
+        if (valor == 0)
+        {
+            r = 1;
+        }
+        else if (valor != 0)
+        {
+            r = 0;
+        }
     }
 
     return r;
 }
 
-void Multip(int resultados[3][5])
+void Multip(int resultados[3][5], int auxdatos[3][5])
 {
-    int auxdatos[3][5] = {{1200, 2500, 2300, 2200, 4000}, {2200, 1500, 2000, 1800, 3500}, {4000, 3500, 3200, 3400, 1000}};
     int product[3][5] = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}};
     int total = 0;
     string cadena;
@@ -395,7 +365,6 @@ void Multip(int resultados[3][5])
     }
     cout << "\n**********COSTO TOTAL DE TRANSPORTE**********"
          << "\n\n";
-    //cout << "Z = x1+x2+x3+x4+x5+x6+x7+x8+x9+x10+x1+x12+x13+x14+x15\n";
     cout << "Z = " << total;
 }
 
@@ -407,6 +376,8 @@ int main()
     int pMayor, fila = 0, columna = 0;
     int resultados[3][5];
     int f = 0, c = 0, cp = 1;
+    /*EN LA MATRIZ DATOS SE DEFINEN LOS COSTOS DE TRANSPORTE, MATRIZ AUXILIAR ES UNA COPIA DE DATOS PARA USARLOS AL FINAL CON EL
+    TABLERO DE ASIGNACIONES, MATRIZ OF DEFINE LAS OFERTAS, MATRIZ D DEFINE LAS DEMANDAS.*/
     int datos[3][5] = {{1200, 2500, 2300, 2200, 4000}, {2200, 1500, 2000, 1800, 3500}, {4000, 3500, 3200, 3400, 1000}};
     int auxdatos[3][5] = {{1200, 2500, 2300, 2200, 4000}, {2200, 1500, 2000, 1800, 3500}, {4000, 3500, 3200, 3400, 1000}};
     int of[3] = {300, 230, 170};
@@ -421,7 +392,7 @@ int main()
         }
     }
 
-    //CICLO REPETITIVO, CALCULA 6 PENALIDADES
+    //CICLO REPETITIVO, CALCULA LAS PENALIDADES, CELDA MENOR COSTO, ASIGNACIONES AL TABLERO OPTIMO
     do
     {
         pMayor = 0;
@@ -485,13 +456,11 @@ int main()
         distribuir(indiceMenor, of, d, resultados, datos);
         cont++;
         cp++;
-    } while (cont < 7); //demandaSatisfecha(d));
+        demandaSatisfecha(d);
+    } while (demandaSatisfecha(d) == 0); 
 
-    if (demandaSatisfecha)
-    {
-        cout << "\n\n**********MATRIZ DE COSTOS**********\n\n";
-        Multip(resultados);
-    }
+    cout << "\n\n**********MATRIZ DE COSTOS**********\n\n";
+    Multip(resultados, auxdatos);
 
     //pMayor = 0;
     getch();

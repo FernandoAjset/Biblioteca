@@ -43,22 +43,17 @@
         justify-self: center;
         display: none;
       }
-      .title {
-        font-size: var(--lg);
-        margin-bottom: 12px;
-        text-align: center;
-      }
-      .subtitle {
-        color: var(--very-light-pink);
-        font-size: var(--md);
-        font-weight: 300;
-        margin-top: 0;
-        margin-bottom: 32px;
-        text-align: center;
-      }
+
       .form {
         display: flex;
         flex-direction: column;
+      }
+      form a {
+        color: var(--hospital-green);
+        font-size: var(--sm);
+        text-align: center;
+        text-decoration: none;
+        margin-bottom: 52px;
       }
       .label {
         font-size: var(--sm);
@@ -74,11 +69,25 @@
         padding: 6px;
         margin-bottom: 12px;
       }
+      .input-email {
+        margin-bottom: 22px;
+      }
       .primary-button {
         background-color: var(--hospital-green);
         border-radius: 8px;
         border: none;
         color: var(--withe);
+        width: 100%;
+        cursor: pointer;
+        font-size: var(--md);
+        font-weight: bold;
+        height: 50px;
+      }
+      .secondary-button {
+        background-color: var(--withe);
+        border-radius: 8px;
+        border: 1px solid var(--hospital-green);
+        color: var(--hospital-green);
         width: 100%;
         cursor: pointer;
         font-size: var(--md);
@@ -93,6 +102,10 @@
         .logo {
           display: block;
         }
+        
+        .secondary-button{
+            margin-top: 100px;
+        }
       }
     </style>
   </head>
@@ -101,9 +114,15 @@
       <div class="form-container">
         <img src="./logos/logo_yard_sale.svg" alt="logo" class="logo" />
 
-        <h1 class="title">Create a new Password</h1>
-        <p class="subtitle">Enter a new password for you account</p>
         <form action="/" class="form">
+          <label for="email" class="label">Email address</label>
+          <input
+            type="text"
+            id="email"
+            placeholder="correo@example.com"
+            class="input input-email"
+          />
+
           <label for="password" class="label">Password</label>
           <input
             type="password"
@@ -112,20 +131,14 @@
             class="input input-password"
           />
 
-          <label for="new-password" class="label">Password</label>
-          <input
-            type="password"
-            id="new-password"
-            placeholder="*********"
-            class="input input-password"
-          />
-
           <input
             type="submit"
-            value="Confirm"
+            value="Login"
             class="primary-button login-button"
           />
+          <a href="/">Forgot my password</a>
         </form>
+        <button class="secondary-button signup-button">Sign up</button>
       </div>
     </div>
   </body>

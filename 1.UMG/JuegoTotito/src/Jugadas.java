@@ -12,7 +12,6 @@ import javax.lang.model.SourceVersion;
  *
  * @author fernando
  */
-@SupportedSourceVersion(SourceVersion.RELEASE_16)
 public class Jugadas {
     
 }

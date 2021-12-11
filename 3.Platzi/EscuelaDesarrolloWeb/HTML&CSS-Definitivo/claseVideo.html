@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <section>
+        <video controls preload="auto" poster="img/queen-gato.jpg">
+          <!--el atributo despues del # pone el inicio y fin del video para el usuario <source src="Disfruto.mp4#t=10,60" />-->
+          <source src="Disfruto.mp4" />
+          <!--varias fuentes del mismo video-->
+          <source src="Disfruto.mp3#t=10,60" />
+        </video>
+        <!--PARA INSERTAR VIDEOS DESDE YOUTUBE, OBTENEMOS EL CODIGO POR MEDIO DEL BOTON COMPARTIR/INCORPORAR-->
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/kijpcUv-b8M"
+          title="Somebody to love - Queen"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </section>
+    </main>
+  </body>
+</html>

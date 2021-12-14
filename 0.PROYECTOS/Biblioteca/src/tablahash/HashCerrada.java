@@ -91,15 +91,6 @@ public class HashCerrada {
                 respuesta += tabla[x].Recorrer(buscar);
             }
         }
-//            } else {
-//                //System.out.println("No hay coincidencias para "+buscar);
-//            }
-//        }
-//        if (respuesta.isEmpty()) {
-//            System.out.println("No hay coincidencias");
-//        } else {
-//            System.out.println("R: " + respuesta);
-//        }
         return respuesta;
     }
 
@@ -108,10 +99,8 @@ public class HashCerrada {
         String respuesta = new String();
         buscar = busqueda;
         for (int x = 0; x < size; x++) {
-            if (tabla[x] != null) {                
+            if (tabla[x] != null) {
                 respuesta += tabla[x].Recorrer(buscar);
-            } else {
-                //System.out.println("No hay coincidencias para "+buscar);
             }
         }
         if (respuesta.isEmpty()) {
@@ -119,57 +108,5 @@ public class HashCerrada {
         } else {
             System.out.println("R: " + respuesta);
         }
-    }
-
-    public static void main(String args[]) {
-
-        HashCerrada h1 = new HashCerrada(10);
-        ArbolBinario arbol = new ArbolBinario();
-        String nombre = new String();
-        String claves = new String();
-
-//PRUEBA DE HASH Y VISUALIZACION EN CONSOLA, ATTE. EDGAR AJSET
-        nombre = "Selva";
-        claves = "Leon,Tigre,Niño,Personas";
-        if (h1.existeLibro(nombre) == false) {
-            h1.IngresarLibro(nombre, claves);
-        }
-
-        nombre = "Biblia";
-        claves = "Pedro,Jesus,Personas,Iglesia,Cruz";
-        if (h1.existeLibro(nombre) == false) {
-            h1.IngresarLibro(nombre, claves);
-        }
-
-        nombre = "Biblia"; //ESTA NO SE INSERTA, POR EXISTIR YA EL NOMBRE DEL LIBRO
-        claves = "Maria,Cielo";
-        if (h1.existeLibro(nombre) == false) {
-            h1.IngresarLibro(nombre, claves);
-        }
-
-        nombre = "Baldor";
-        claves = "Mate,Signo,Operaciones,calculo";
-        if (h1.existeLibro(nombre) == false) {
-            h1.IngresarLibro(nombre, claves);
-        }
-
-        nombre = "ams";
-        claves = "Planeta,Estrella,personas";
-        if (h1.existeLibro(nombre) == false) {
-            h1.IngresarLibro(nombre, claves);
-        }
-
-        nombre = "sam";
-        claves = "Personas,vida,mar,ecosistema";
-        if (h1.existeLibro(nombre) == false) {
-            h1.IngresarLibro(nombre, claves);
-        }
-        System.out.println("BUSQUEDA POR CONSOLA");
-        h1.Recorrer("personas");
-        
-        System.out.println("\nRETORNO DE CADENA PARA INTERFAZ");
-        System.out.println(h1.BuscarPorClaves("personas"));
-        System.out.println(h1.BuscarPorClaves("personasss"));
-
     }
 }

@@ -19,8 +19,6 @@ public class NodoArbol {
 
    }   
    
-
-
    public String DarDato(){
 
      return dato;

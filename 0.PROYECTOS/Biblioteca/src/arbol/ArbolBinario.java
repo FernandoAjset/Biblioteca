@@ -160,18 +160,4 @@ public void inorden(NodoArbol nodo){
 
     return cadena;
   }
-  
-  public static void main (String args[]){
-
-    ArbolBinario a1 = new ArbolBinario(); 
-    a1.IngresarLibro("Biblia");
-    a1.IngresarLibro("Maria");
-    a1.IngresarLibro("Jesus");
-    a1.IngresarLibro("Salmos");
-    a1.IngresarLibro("Apocalipsis");
-    
-      System.out.println(a1.Preorden());
-     System.out.println(a1.Preorden());
-      
-  }
 }

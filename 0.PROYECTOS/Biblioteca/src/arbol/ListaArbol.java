@@ -1,88 +1,68 @@
 package arbol;
 
 public class ListaArbol {
-    
-  NodoArbol inicio; 
 
-   
+    NodoArbol inicio;
 
-  public void IngresarInicio(String pDato){
+    public void IngresarInicio(String pDato) {
 
-    if (inicio==null){
+        if (inicio == null) {
 
-      inicio = new NodoArbol(pDato); 
+            inicio = new NodoArbol(pDato);
 
-    }
+        } else {
 
-    else{
+            NodoArbol nuevo = new NodoArbol(pDato);
 
-      NodoArbol nuevo = new NodoArbol(pDato); 
+            nuevo.SetSig(inicio);
 
-      nuevo.SetSig(inicio);
+            inicio = nuevo;
 
-      inicio = nuevo;                  
+        }
 
     }
 
-  }   
+    public void IngresarFinal(String pDato) {
 
-  public void IngresarFinal(String pDato){
+        if (inicio == null) {
 
-    if(inicio == null){
+            inicio = new NodoArbol(pDato);
 
-      inicio = new NodoArbol(pDato);       
+        } else {
 
-    }
+            NodoArbol nuevo = new NodoArbol(pDato);
 
-    else {
+            DarUltimo().SetSig(nuevo);
 
-      NodoArbol nuevo = new NodoArbol(pDato); 
-
-      DarUltimo().SetSig(nuevo);
-
-    }//fin if
-
-  }
-
-  public NodoArbol DarUltimo(){
-
-    NodoArbol aux = inicio; 
-
-    while(aux.DarSig()!= null){
-
-      aux = aux.DarSig(); 
+        }//fin if
 
     }
 
-    return aux; 
+    public NodoArbol DarUltimo() {
 
-  }
+        NodoArbol aux = inicio;
 
-  public void Recorrer(){
+        while (aux.DarSig() != null) {
 
-    NodoArbol aux = inicio; 
+            aux = aux.DarSig();
 
-    while(aux!=null){
+        }
 
-      System.out.println(aux.DarDato()); 
-
-      aux = aux.DarSig();       
+        return aux;
 
     }
 
-  }
+    public void Recorrer() {
 
-  public static void main(String args[]){
+        NodoArbol aux = inicio;
 
-    ListaArbol l1 = new ListaArbol(); 
+        while (aux != null) {
 
-    l1.IngresarFinal("Biblia");
-    l1.IngresarFinal("Jesus");
-    l1.IngresarFinal("Apostol"); 
-    l1.IngresarFinal("Maria"); 
-   // System.out.println("Eliminado: " + 11.EliminarInicio().DarDato());
-    l1.Recorrer();
+            System.out.println(aux.DarDato());
 
-  }   
-    
+            aux = aux.DarSig();
+
+        }
+
+    }
 }

@@ -63,23 +63,13 @@ public class ListaEnlazada {
                 if (arregloClaves[i].equalsIgnoreCase(pBusqueda) != false) {
                     existe = true;
                     if (existe != false) {
-                        respuesta += aux.DarNombre() + ",";
-                       // System.out.println(respuesta);
+                        respuesta += "\t"+"*"+aux.DarNombre() + "\n";
+                        // System.out.println(respuesta);
                     }
                 }
             }
             aux = aux.DarSig();
         }
         return respuesta;
-    }
-
-    public static void main(String args[]) {
-        ListaEnlazada l1 = new ListaEnlazada();
-        
-        l1.IngresarFinal("Biblia", "Maria,Juan,Pedro");
-        l1.IngresarFinal("Bibli", "Juan,Pedro");
-        l1.IngresarFinal("Bibliaa", "Maria,Juan,Pedro");
-        
-        System.out.println(l1.Recorrer("juan"));
     }
 }

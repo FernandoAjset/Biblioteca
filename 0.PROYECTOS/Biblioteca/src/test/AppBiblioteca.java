@@ -24,6 +24,7 @@ public class AppBiblioteca extends javax.swing.JFrame {
         initComponents();
         nLibro.setText("");
         pClaves.setText("");
+        setLocationRelativeTo(null);
     }
 
     public ArbolBinario arbol = new ArbolBinario();
@@ -55,7 +56,7 @@ public class AppBiblioteca extends javax.swing.JFrame {
         iLibro = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonBuscarLibro = new javax.swing.JButton();
         bLibro = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -72,7 +73,7 @@ public class AppBiblioteca extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusTraversalPolicyProvider(true);
         setIconImage(getIconImage());
-        setMinimumSize(new java.awt.Dimension(600, 650));
+        setMinimumSize(new java.awt.Dimension(544, 668));
         getContentPane().setLayout(null);
         getContentPane().add(nLibro);
         nLibro.setBounds(212, 19, 280, 32);
@@ -102,14 +103,14 @@ public class AppBiblioteca extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(38, 78, 160, 14);
 
-        jButton1.setText("Buscar Libro");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBuscarLibro.setText("Buscar Libro");
+        jButtonBuscarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonBuscarLibroActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(48, 240, 116, 31);
+        getContentPane().add(jButtonBuscarLibro);
+        jButtonBuscarLibro.setBounds(48, 240, 116, 31);
         getContentPane().add(bLibro);
         bLibro.setBounds(197, 207, 260, 27);
 
@@ -159,17 +160,16 @@ public class AppBiblioteca extends javax.swing.JFrame {
         jScrollPane1.setViewportView(rbxclaves);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(46, 510, 470, 76);
+        jScrollPane1.setBounds(46, 490, 470, 130);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void iLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iLibroActionPerformed
         String cadenaLibro = new String();
-        String claves = pClaves.getText().replaceAll("\\s+","");
+        String claves = pClaves.getText().replaceAll("\\s+", "");
         ArbolBinario arbolClave = new ArbolBinario();
 
-//        ingresarLibro(cadenaLibro, claves);
         cadenaLibro = nLibro.getText();
         if (cadenaLibro.isEmpty() || claves.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nombre del Libro o Claves no puede estar vacio, verifique");
@@ -187,40 +187,44 @@ public class AppBiblioteca extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_iLibroActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonBuscarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarLibroActionPerformed
         String buscar = String.valueOf(bLibro.getText());
         mNombre.setText("");
         mClaves.setText("");
         if (tablaHash.BuscarLibro(buscar) != null) {
-            mNombre.setText("Nombre del Libro: "+tablaHash.BuscarLibro(buscar).DarNombre());
-            mClaves.setText("Palabras clave: "+tablaHash.BuscarLibro(buscar).DarClaves().Preorden());
+            JOptionPane.showMessageDialog(null, "Mostrando resultados");
+            mNombre.setText("Nombre del Libro: " + tablaHash.BuscarLibro(buscar).DarNombre());
+            mClaves.setText("Palabras clave: " + tablaHash.BuscarLibro(buscar).DarClaves().Preorden());
         } else {
-            JOptionPane.showMessageDialog(null, "NO existen coincidencias para '" + buscar + "'");
-            bLibro.setText("");
+            if (bLibro.getText().isBlank()) {
+                JOptionPane.showMessageDialog(null, "El nombre del libro, no puede estar vacio");
+            } else {
+                JOptionPane.showMessageDialog(null, "NO existen coincidencias para '" + buscar + "'");
+                bLibro.setText("");
+            }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonBuscarLibroActionPerformed
 
     private void blibroxclavesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blibroxclavesActionPerformed
-      String buscar = new String();
-      String rlibros = new String();
-      String aux = new String();
-      buscar=bxclaves.getText().replaceAll("\\s+","");
-        if (buscar.isEmpty()){
+        String buscar = new String();
+        String rlibros = new String();
+        String aux = new String();
+        buscar = bxclaves.getText().replaceAll("\\s+", "");
+        if (buscar.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingreso de palabras clave, no puede estar vacio");
-        }
-        else{
+        } else {
             String arregloClaves[] = buscar.split(",");
             for (int i = 0; i < arregloClaves.length; i++) {
-              aux = tablaHash.BuscarPorClaves(arregloClaves[i]);
-              if(aux.isEmpty()!=true){
-                  rlibros+=arregloClaves[i]+" se encuentra en: "+aux+"\n";
-              }
-            }            
-            if(rlibros.isEmpty()){
-               JOptionPane.showMessageDialog(null, "NO EXISTEN LIBROS QUE CONTENGAN LA(S) PALABRA(S) CLAVE"); 
-               rbxclaves.setText("");
+                aux = tablaHash.BuscarPorClaves(arregloClaves[i]);
+                if (aux.isEmpty() != true) {
+                    rlibros += arregloClaves[i].toUpperCase() + " se encuentra en: " + "\n" + aux;
+                }
             }
-            else{
+            if (rlibros.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "NO EXISTEN LIBROS QUE CONTENGAN LA(S) PALABRA(S) CLAVE");
+                rbxclaves.setText("");
+            } else {
+                JOptionPane.showMessageDialog(null, "Mostrando resultados");
                 rbxclaves.setText(rlibros);
             }
         }
@@ -272,22 +276,21 @@ public class AppBiblioteca extends javax.swing.JFrame {
             }
         });
     }
-    
-@Override
-public Image getIconImage() {
-   Image retValue = Toolkit.getDefaultToolkit().
-         getImage(ClassLoader.getSystemResource("recursos/iconbiblio.png"));
 
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("recursos/iconbiblio.png"));
 
-   return retValue;
-}
+        return retValue;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bLibro;
     private javax.swing.JButton blibroxclaves;
     private javax.swing.JTextField bxclaves;
     private javax.swing.JButton iLibro;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonBuscarLibro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

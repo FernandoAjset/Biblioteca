@@ -1,0 +1,15 @@
+p {
+  color: chocolate;
+  font-family: "Courier New", Courier, monospace;
+}
+
+/*Usando clases*/
+.parrafo{
+    color: blue;
+}
+
+/*Usando ID*/
+#parrafo2{
+    color: yellowgreen;
+    font-size: 15px;
+}

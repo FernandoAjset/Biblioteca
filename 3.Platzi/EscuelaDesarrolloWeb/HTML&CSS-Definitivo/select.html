@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select</title>
+  </head>
+  <body>
+    <main>
+      <!-- Esta forma es la basica y tradicional para mostrar un listado
+        para seleccionar una opcion, recomendado para listas pequeñas -->
+      <fieldset>
+          <legend><b>Select List </b>(Para listas pequeñas)</legend>
+        <select name="cusos" id="">
+          <option value="javascript">JavaScript</option>
+          <option value="html5">HTML5</option>
+          <option value="css3">CSS3</option>
+          <option value="web-standars">Web Standars</option>
+        </select>
+      </fieldset>
+      <br />
+      <!--Esta forma nos da la posibilidad de escribir una parte
+        en base a las coincidencias, nos muestra el listado de las 
+    opciones que si cumplen con los de busqueda, recomendado para listas grandes-->
+      <fieldset>
+          <legend><b>Input List </b>(Para listas muy grandes)</legend>
+        <input list="cursos" />
+        <datalist id="cursos">
+          <option value="JavaScript"></option>
+          <option value="HTML5"></option>
+          <option value="CSS3"></option>
+          <option value="Java"></option>
+        </datalist>
+        <input type="submit" />
+      </fieldset>
+    </main>
+  </body>
+</html>

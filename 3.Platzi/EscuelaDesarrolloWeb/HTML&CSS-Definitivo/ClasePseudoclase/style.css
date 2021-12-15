@@ -1,0 +1,33 @@
+/* Agrega los estilos a lo que está con la clase "main-nav" */
+.main-nav {
+  margin-top: 10px;
+  list-style: none;
+  padding-left: 0;
+  background-color: #13a4a4;
+}
+
+.main-nav_item {
+  display: inline-block;
+}
+
+/* Aplica los estilos a todos los elementos tipo ancla que tienen la clase "main-nav_item" */
+.main-nav_item a {
+  text-decoration: none;
+  color: white;
+  padding: 5px;
+}
+
+/* Pseudoclase para agregar efecto al posicionarse sobre el texto*/
+.main-nav_item a:hover {
+  color: blue;
+}
+
+/* Pseudoclase para poner color al dar click */
+.main-nav_item a:active {
+  color: red;
+}
+
+/* Despues del elemento ancla, agregar el contenido  */
+.main-nav_item a::after {
+  content: " | ";
+}

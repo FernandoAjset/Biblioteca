@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1{
+    color: purple;
+    font-family: serif;
+    margin-bottom: 10px;
+}
+
+
+.title{
+    font-size: 18px;
+    font-family: monospace;
+}
+
+.nav{
+    margin-top: 10px;
+    list-style: none;
+    padding-left: 0;
+}
+
+.nav li{
+    display: inline-block;
+}
+
+.nav a{
+    text-decoration: none;
+    color: white;
+    background-color: #13a4a4;
+    padding: 5px;
+    border-radius: 7px;
+}
+
+.nav a:hover{
+    background-color: rgb(10, 228, 228);
+}
+
+.nav .blog{
+    background-color: orange;
+}
+
+.nav .blog:hover{
+    background-color: rgb(248, 180, 53);
+}
+
+.nav .instructores{
+    background-color:blue;
+}

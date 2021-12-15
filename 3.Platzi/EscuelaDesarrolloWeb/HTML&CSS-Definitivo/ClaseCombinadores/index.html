@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Combinadores</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <fieldset>
+      <legend>Combinador: Adjacent Siblings</legend>
+      <div class="adjacent">
+        <h2>Soy el primer H2</h2>
+        <p>Soy el primer parrafo</p>
+        <h2>Soy el segundo H2</h2>
+        <h3>Soy el primer H3</h3>
+        <p>Soy el segundo parrafo</p>
+        <h2>Soy el tercer H2</h2>
+        <p>Soy el tercer parrafo</p>
+      </div>
+    </fieldset>
+    <br />
+    <fieldset>
+      <legend>Combinador: General Sibling</legend>
+      <div class="general">
+        <h2>Soy un h2</h2>
+        <p>Soy un p</p>
+        <h2>Soy un h2</h2>
+        <h3>Soy un h3</h3>
+        <p>Soy un p</p>
+        <div>
+          <p>Parrafo dentro de segundo div</p>
+        </div>
+      </div>
+    </fieldset>
+    <br />
+    <fieldset class="hijo-desc">
+      <legend>Combinador: Hijo y Descendiente</legend>
+      <div>
+        <article>
+          <p>Soy un texto</p>
+        </article>
+        <article>
+          <p>Soy un texto</p>
+        </article>
+        <section>
+          <div>
+            <p>Soy un parrafo</p>
+          </div>
+        </section>
+        <p>soy un parrafo</p>
+      </div>
+    </fieldset>
+  </body>
+</html>

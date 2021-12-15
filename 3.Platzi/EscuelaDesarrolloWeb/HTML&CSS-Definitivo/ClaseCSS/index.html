@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clase CSS</title>
+
+    <!--Forma de enlazar CSS, con un archivo independiente
+    ESTA ES LA MEJOR PRACTICA-->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!--Otra forma de poner estilos, directos desde el HTML-->
+    <style>
+      p {
+        /*color: blue;*/
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- Poniendo estilos directos a la etiqueta, 
+    esta forma puede ser un problema porque va a 
+    sobreescribir lo que pueda haber en la hoja de estilos-->
+      <p style="color: red; font-size: 30px">Soy un parrafo estilizado desde el HTML</p>
+      <p class="parrafo">Este parrafo se estiliza desde una hoja aparte, usando Class</p>
+      <p id="parrafo2">Este parrafo se estiliza desde una hoja aparte, usando ID</p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+main{
+    background-color: red;
+    width: 100%;
+    width: 600px;
+    height: 500px;
+}
+p {
+  /* Medida absoluta, no va a cambiar sin importar la medida de la 
+    vista en el dispositivo o tamaño de pantalla */
+  font-size: 16px;
+  /* Medida relativa, es el 50% del heredado desde el HTML que es por defecto
+16px*/
+  /*font-size: 50%;*/
+}

@@ -1,0 +1,9 @@
+
+main{
+    width: 100%;
+    height: 500px;
+    border: 10px solid grey;
+    padding: 20px 35px;
+    /* Para que el tamaño se ajuste tomando en cuenta la suma del elemento y los posibles padding, border, etc */
+    box-sizing: border-box;
+}

@@ -1,0 +1,16 @@
+/* Aplique rojo a los parrafos que esten cerca de una etiqueta h2 (hermano cercano)*/
+.adjacent h2 + p {
+  color: red;
+}
+
+/* Aplica verde a los parrafos que tienen de forma general un hermano h2
+es decir siempre y cuando exista en alguna parte un hermano h2, sin importar si es
+inmediato */
+.general h2 ~ p {
+  color: green;
+}
+
+/* La etiqueta parrafo que sea hija directa de una etiqueta div */
+.hijo-desc div>p{
+    color: red;
+}

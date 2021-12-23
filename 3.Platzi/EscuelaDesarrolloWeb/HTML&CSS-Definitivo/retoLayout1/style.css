@@ -1,0 +1,264 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  /* background-image: radial-gradient(
+    circle at 47.3% 80.89%,
+    #6a93af 0,
+    #447b9d 50%,
+    #09638b 100%
+  ); */
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    #456cbc 0,
+    #205bae 50%,
+    #004ba1 100%
+  );
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.logo,
+.menu,
+.menu-items,
+.menu-items li {
+  display: inline-block;
+}
+
+.logo {
+  margin-left: 2%;
+  width: 13%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.logo img {
+  height: 100%;
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  margin-right: 25px;
+}
+
+.menu-items li {
+  margin-left: 12px;
+}
+
+.menu-items a {
+  text-decoration: none;
+  color: aliceblue;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.menu-items a:active {
+  color: rgb(182, 182, 182);
+}
+
+.menu-items a:hover {
+  color: #1d3557;
+  font-weight: bold;
+}
+
+.main-container {
+  height: 82vh;
+  width: 100vw;
+  background-color: bisque;
+  display: flex;
+}
+.main-container .aside {
+  display: inline-block;
+  background-image: radial-gradient(
+    circle at 48.82% 36.48%,
+    #d5f6f5 0,
+    #c0e8e9 25%,
+    #a8d9dc 50%,
+    #90cad0 75%,
+    #7abdc5 100%
+  );
+  border-right: 3px solid #1d3557;
+  height: 100%;
+  width: 17%;
+}
+
+.main-container .home {
+  position: relative;
+  background-image: radial-gradient(
+    circle at 48.82% 36.48%,
+    #d5f6f5 0,
+    #c0e8e9 25%,
+    #a8d9dc 50%,
+    #90cad0 75%,
+    #7abdc5 100%
+  );
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 10%;
+  font-family: 'Raleway', sans-serif;
+}
+
+.main-container .home .products {
+  display: flex;
+
+  justify-content: center;
+  width: 96%;
+  height: 75%;
+}
+.main-container .home .product {
+  position: relative;
+  width: 30%;
+  height: 70%;
+  background-color: #004ba1;
+  margin: 2%;
+  border-radius: 15px;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(223, 223, 223),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product figure{
+  position: relative;
+  width: 70%;
+  height: 70%;
+}
+
+.product figure img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.product figure img:hover{
+  width: 100.2%;
+  height: 100.2%;
+}
+
+.product p{
+  text-align: center;
+  color: #e9f4e7;
+  font-family: 'Raleway', sans-serif;
+}
+
+.content-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  position: relative;
+  background-image: radial-gradient(
+    circle at 38.85% 61.15%,
+    #5a89a7 0,
+    #447b9d 50%,
+    #2a6d93 100%
+  );
+  width: 80%;
+  height: 20%;
+  display: block;
+  margin: auto auto;
+  border-radius: 15px;
+}
+
+footer,
+.social-media,
+.payment,
+.social-media p,
+.payment p {
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+}
+
+footer {
+  width: 100vw;
+  height: 8vh;
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    #f9fff5 0,
+    #f1faee 50%,
+    #e9f4e7 100%
+  );
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+.social-media,
+.logos {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logos {
+  position: relative;
+  width: 35%;
+}
+
+.social-media img {
+  position: relative;
+  width: 90%;
+}
+
+.social-media img:hover {
+  width: 100%;
+}
+
+.social-media a {
+  padding: auto;
+  width: 25%;
+  padding: 5%;
+  text-align: center;
+}
+
+.payment {
+  width: 50%;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment .logos {
+  width: 35%;
+}
+
+.payment img {
+  position: relative;
+  padding: 5%;
+  width: 33.33%;
+}
